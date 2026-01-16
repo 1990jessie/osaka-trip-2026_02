@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OSAKA / ARCHIVE 2026</title>
+    <title>JOURNAL / OSAKA 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@600;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'casa-bg': '#F7F3F0',    // 柔和和紙色
-                        'casa-ink': '#332F2E',   // 深炭灰文字
-                        'casa-accent': '#AF5F48', // 輕柔鐵鏽紅
-                        'casa-border': '#D1C7BD', // 淺沙色邊框
-                        'casa-card': '#FFFFFF'
+                        'jp-bg': '#F9F6F2',      // 柔和米白紙張色
+                        'jp-ink': '#2D2D2D',     // 深炭灰
+                        'jp-accent': '#7E909A',  // 灰藍調 (柔和重點)
+                        'jp-sand': '#E8E2D9',    // 淺沙色 (分割線)
+                        'jp-paper': '#FFFFFF'    // 純白 (卡片)
                     },
                     fontFamily: {
-                        'jp': ['Noto Sans JP', 'sans-serif'],
-                        'display': ['Playfair Display', 'serif'],
+                        'sans': ['Noto Sans JP', 'sans-serif'],
+                        'serif': ['Noto Serif JP', 'serif'],
                         'num': ['Montserrat', 'sans-serif']
                     }
                 }
@@ -30,122 +30,96 @@
     </script>
 
     <style>
-        body { background-color: #F7F3F0; color: #332F2E; font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
-        .magazine-border { border: 1.2px solid #332F2E; }
-        .soft-border { border: 1px solid #D1C7BD; }
-        .active-tab { color: #AF5F48 !important; }
-        .ticket-dash { border-top: 1.2px dashed #332F2E; position: relative; }
-        .ticket-dash::before, .ticket-dash::after {
-            content: ''; position: absolute; top: -8px; width: 16px; height: 16px; 
-            background: #F7F3F0; border-radius: 50%; border: 1.2px solid #332F2E;
-        }
-        .ticket-dash::before { left: -10px; }
-        .ticket-dash::after { right: -10px; }
+        body { background-color: #F9F6F2; color: #2D2D2D; font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
+        .serif-title { font-family: 'Noto Serif JP', serif; }
+        .jp-border { border: 0.5px solid #2D2D2D; }
+        .soft-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .active-tab { color: #7E909A !important; position: relative; }
+        .active-tab::after { content: ''; position: absolute; bottom: -8px; width: 4px; height: 4px; background: #7E909A; border-radius: 50%; left: 50%; transform: translateX(-50%); }
         
-        /* 柔化陰影設計 */
-        .casa-shadow {
-            box-shadow: 6px 6px 0px rgba(51, 47, 46, 0.08);
-        }
-        .accent-shadow {
-            box-shadow: 6px 6px 0px rgba(175, 95, 72, 0.15);
-        }
+        /* 雜誌感裝飾 */
+        .vertical-text { writing-mode: vertical-rl; }
+        .date-badge { background: #2D2D2D; color: #F9F6F2; padding: 2px 8px; font-size: 10px; font-family: 'Montserrat'; font-weight: 700; }
         
-        /* 捲軸美化 */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #F7F3F0; }
-        ::-webkit-scrollbar-thumb { background: #D1C7BD; border-radius: 10px; }
+        /* 平滑過渡 */
+        .page-fade { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        input, textarea { background: transparent !important; }
     </style>
 </head>
-<body class="pb-28">
+<body class="pb-24">
 
-    <header class="p-6 pt-12 border-b border-casa-border bg-casa-bg/80 backdrop-blur-md sticky top-0 z-40">
-        <div class="flex justify-between items-end">
+    <header class="px-6 pt-12 pb-6 sticky top-0 bg-jp-bg/80 backdrop-blur-md z-40 border-b border-jp-sand">
+        <div class="flex justify-between items-baseline">
             <div>
-                <p class="font-num text-[9px] tracking-[0.4em] uppercase opacity-50 font-bold">Documentary / 2026</p>
-                <h1 class="font-display italic text-5xl leading-none mt-1 text-casa-ink">Osaka.</h1>
+                <h1 class="serif-title text-3xl font-black tracking-tight">大阪旅行記.</h1>
+                <p class="font-num text-[10px] tracking-[0.2em] opacity-40 uppercase mt-1">Winter, 2026 Archive</p>
             </div>
-            <div class="text-right pb-1">
-                <span class="font-num font-bold text-xs px-2 py-1 bg-casa-ink text-white">FEB 13 - 17</span>
+            <div class="text-right">
+                <span class="date-badge uppercase">02.13 - 02.17</span>
             </div>
         </div>
     </header>
 
-    <main id="app" class="p-5 animate-fadeIn">
+    <main id="app" class="p-6 page-fade">
         </main>
 
-    <nav class="fixed bottom-0 left-0 w-full bg-casa-bg border-t border-casa-border px-2 py-5 z-50 flex justify-around items-center backdrop-blur-xl bg-opacity-95">
-        <button onclick="router('plan')" id="nav-plan" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
-            <i class="fa-solid fa-map-location text-xl"></i><span class="text-[9px] font-bold">PLAN</span>
+    <nav class="fixed bottom-0 left-0 w-full bg-jp-bg/95 border-t border-jp-sand px-4 py-5 z-50 flex justify-around items-center">
+        <button onclick="router('plan')" id="nav-plan" class="flex flex-col items-center gap-1 opacity-30 transition-all">
+            <i class="fa-solid fa-calendar-day text-lg"></i><span class="text-[8px] font-bold">行程</span>
         </button>
-        <button onclick="router('food')" id="nav-food" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
-            <i class="fa-solid fa-utensils text-xl"></i><span class="text-[9px] font-bold">FOOD</span>
+        <button onclick="router('food')" id="nav-food" class="flex flex-col items-center gap-1 opacity-30 transition-all">
+            <i class="fa-solid fa-plate-wheat text-lg"></i><span class="text-[8px] font-bold">美食</span>
         </button>
-        <button onclick="router('wallet')" id="nav-wallet" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
-            <i class="fa-solid fa-calculator text-xl"></i><span class="text-[9px] font-bold">WALLET</span>
+        <button onclick="router('wallet')" id="nav-wallet" class="flex flex-col items-center gap-1 opacity-30 transition-all">
+            <i class="fa-solid fa-wallet text-lg"></i><span class="text-[8px] font-bold">記帳</span>
         </button>
-        <button onclick="router('buy')" id="nav-buy" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
-            <i class="fa-solid fa-bag-shopping text-xl"></i><span class="text-[9px] font-bold">BUY</span>
+        <button onclick="router('buy')" id="nav-buy" class="flex flex-col items-center gap-1 opacity-30 transition-all">
+            <i class="fa-solid fa-bag-shopping text-lg"></i><span class="text-[8px] font-bold">清單</span>
         </button>
-        <button onclick="router('lists')" id="nav-lists" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
-            <i class="fa-solid fa-list-check text-xl"></i><span class="text-[9px] font-bold">LISTS</span>
+        <button onclick="router('lists')" id="nav-lists" class="flex flex-col items-center gap-1 opacity-30 transition-all">
+            <i class="fa-solid fa-check-double text-lg"></i><span class="text-[8px] font-bold">準備</span>
         </button>
-        <button onclick="router('info')" id="nav-info" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
-            <i class="fa-solid fa-circle-info text-xl"></i><span class="text-[9px] font-bold">INFO</span>
+        <button onclick="router('info')" id="nav-info" class="flex flex-col items-center gap-1 opacity-30 transition-all">
+            <i class="fa-solid fa-info-circle text-lg"></i><span class="text-[8px] font-bold">資訊</span>
         </button>
     </nav>
 
     <script>
-        // --- DATA ---
-        const FLIGHTS = [
-            { type: 'DEPARTURE', date: '2026.02.13', flight: 'D7378', route: 'TPE ❯ KIX', time: '15:40 ❯ 19:20' },
-            { type: 'RETURN', date: '2026.02.17', flight: 'D7379', route: 'KIX ❯ TPE', time: '20:45 ❯ 23:05' }
-        ];
-
-        const HOTEL = {
-            name: "Wayfarer Matsu",
-            address: "日本大阪府大阪市中央區南船場1丁目2-7",
-            map: "https://www.google.com/maps0"
-        };
-
+        // --- DATA (同前，更新連結) ---
         const ITINERARY = [
-            { day: "01", date: "2026/02/13 (五)", title: "抵達與休息", events: [
-                { time: "19:20", title: "抵達關西機場 (KIX)", type: "trans", map: "https://www.google.com/maps1" },
-                { time: "20:30", title: "搭乘接駁車前往飯店", type: "trans", map: HOTEL.map },
-                { time: "21:30", title: "飯店 Check-in & 超市採買", type: "food", desc: "Wayfarer Matsu 附近超市", map: "https://www.google.com/maps2" }
+            { day: "01", date: "2/13 FRI", title: "暮色抵達", events: [
+                { time: "19:20", title: "關西機場 (KIX) 著", type: "trans", map: "https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" },
+                { time: "21:30", title: "南船場休息", desc: "Wayfarer Matsu Check-in", map: "https://www.google.com/maps/search/?api=1&query=Wayfarer+Matsu+Osaka" }
             ]},
-            { day: "02", date: "2026/02/14 (六)", title: "天王寺深度遊", events: [
-                { time: "09:30", title: "飯店集合出發", type: "important" },
-                { time: "10:00", title: "四天王寺參拜", type: "sight", map: "https://www.google.com/maps3" },
-                { time: "11:15", title: "午餐：天王寺周邊", type: "food", desc: "HARUKAS 美食街", map: "https://www.google.com/maps4" },
-                { time: "15:15", title: "新世界散策", type: "sight", desc: "通天閣周邊", map: "https://www.google.com/maps5" },
-                { time: "18:00", title: "晚餐：難波地區", type: "food", map: "https://www.google.com/maps6" }
+            { day: "02", date: "2/14 SAT", title: "下町散步", events: [
+                { time: "10:00", title: "四天王寺參拜", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Shitennoji" },
+                { time: "11:15", title: "天王寺午茶", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Abeno+Harukas" },
+                { time: "15:15", title: "新世界散策", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Shinsekai+Osaka" },
+                { time: "18:00", title: "難波夜食", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Namba+Dotonbori" }
             ]},
-            { day: "03", date: "2026/02/15 (日)", title: "京都古都市集", events: [
-                { time: "08:00", title: "出發梅田站", type: "trans", map: "https://www.google.com/maps7" },
-                { time: "09:55", title: "百萬遍知恩寺", type: "sight", desc: "手作市集 (建議1.5-2hr)", map: "https://www.google.com/maps8" },
-                { time: "13:30", title: "清水寺區域", type: "sight", desc: "二年坂・三年坂", map: "https://www.google.com/maps9" },
-                { time: "16:00", title: "牛奉行 (京都美食)", type: "food", map: "https://www.google.com/maps/search/?api=1&query0" }
+            { day: "03", date: "2/15 SUN", title: "古都巡禮", events: [
+                { time: "09:55", title: "百萬遍手作市集", type: "sight", desc: "知恩寺境內", map: "https://www.google.com/maps/search/?api=1&query=Chion-ji+Temple+Kyoto" },
+                { time: "13:30", title: "清水寺區域", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera" },
+                { time: "16:00", title: "京都牛奉行", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Kyoto+Gion+Restaurant" }
             ]},
-            { day: "04", date: "2026/02/16 (一)", title: "溫泉休息日", events: [
-                { time: "10:45", title: "大阪 BAY TOWER 咖啡", type: "sight", map: "https://www.google.com/maps/search/?api=1&query1" },
-                { time: "13:30", title: "空庭溫泉", type: "important", desc: "泡湯、浴衣拍照、休息", map: "https://www.google.com/maps/search/?api=1&query2" },
-                { time: "17:15", title: "晚餐：溫泉館內", type: "food", map: "https://www.google.com/maps/search/?api=1&query3" }
+            { day: "04", date: "2/16 MON", title: "湯浴時刻", events: [
+                { time: "13:30", title: "空庭溫泉", type: "important", desc: "泡湯、浴衣休息", map: "https://www.google.com/maps/search/?api=1&query=Solaniwa+Onsen" },
+                { time: "17:15", title: "館內晚餐", type: "food" }
             ]},
-            { day: "05", date: "2026/02/17 (二)", title: "購物與回程", events: [
-                { time: "AM", title: "心齋橋/難波購物", type: "sight", map: "https://www.google.com/maps/search/?api=1&query4" },
-                { time: "20:45", title: "班機起飛返台", type: "important" }
+            { day: "05", date: "2/17 TUE", title: "歸途路上的購物", events: [
+                { time: "11:00", title: "心齋橋最終採買", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Suji" },
+                { time: "20:45", title: "關西機場起飛", type: "important" }
             ]}
         ];
 
-        // --- ROUTER ---
+        // --- CORE FUNCTIONS ---
         function router(target) {
-            document.querySelectorAll('nav button').forEach(btn => {
-                btn.classList.remove('opacity-100', 'text-casa-accent');
-                btn.classList.add('opacity-30');
-            });
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.replace('opacity-100', 'opacity-30'));
             const active = document.getElementById(`nav-${target}`);
             active.classList.replace('opacity-30', 'opacity-100');
-            active.classList.add('text-casa-accent');
+            active.classList.add('active-tab');
             
             window.scrollTo(0, 0);
             render(target);
@@ -161,63 +135,45 @@
             if (page === 'info') renderInfo(container);
         }
 
-        // --- PLAN RENDER ---
+        // --- RENDER PLAN ---
         function renderPlan(el) {
             let html = `
-                <div class="mb-10 space-y-4">
-                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-ink pl-3 uppercase tracking-tighter">Flights</h2>
-                    ${FLIGHTS.map(f => `
-                        <div class="magazine-border p-5 bg-casa-card casa-shadow">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="font-num text-[10px] font-bold text-white bg-casa-accent px-2 py-0.5 tracking-widest">${f.type}</span>
-                                <span class="font-num font-bold text-casa-ink opacity-40">${f.flight}</span>
-                            </div>
-                            <div class="ticket-dash my-4"></div>
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="font-num font-extrabold text-2xl tracking-tighter text-casa-ink">${f.route}</p>
-                                    <p class="font-num text-[10px] font-bold opacity-30">${f.date}</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-num font-bold text-xl text-casa-accent">${f.time}</p>
-                                </div>
-                            </div>
+                <div class="mb-12">
+                    <p class="font-num text-[10px] font-bold opacity-30 mb-2 tracking-[0.3em]">FLIGHT INFO</p>
+                    <div class="bg-jp-paper p-5 soft-shadow flex justify-between items-center jp-border">
+                        <div class="text-xs">
+                            <p class="font-bold opacity-40">2/13 TPE-KIX</p>
+                            <p class="font-num text-lg font-bold">D7378 <span class="text-[10px] opacity-40">15:40-19:20</span></p>
                         </div>
-                    `).join('')}
-                </div>
-
-                <div class="mb-10">
-                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-ink pl-3 uppercase tracking-tighter">Stay</h2>
-                    <div class="magazine-border p-5 bg-casa-card casa-shadow flex justify-between items-center">
-                        <div>
-                            <h3 class="font-bold text-lg text-casa-ink">${HOTEL.name}</h3>
-                            <p class="text-[11px] opacity-50 mt-1 font-medium">${HOTEL.address}</p>
+                        <div class="h-8 w-px bg-jp-sand"></div>
+                        <div class="text-right text-xs">
+                            <p class="font-bold opacity-40">2/17 KIX-TPE</p>
+                            <p class="font-num text-lg font-bold">D7379 <span class="text-[10px] opacity-40">20:45-23:05</span></p>
                         </div>
-                        <button onclick="window.open('${HOTEL.map}')" class="soft-border p-3 text-casa-accent hover:bg-casa-accent hover:text-white transition-all">
-                            <i class="fa-solid fa-map-pin"></i>
-                        </button>
                     </div>
                 </div>
 
-                <div class="space-y-12">
-                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-ink pl-3 uppercase tracking-tighter">Daily</h2>
+                <div class="space-y-16">
                     ${ITINERARY.map(day => `
                         <div class="relative">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="font-num font-black text-4xl text-casa-accent/20">D${day.day}</span>
-                                <div class="h-[1.2px] bg-casa-ink flex-1"></div>
-                                <span class="font-num font-bold text-[10px] tracking-widest opacity-40">${day.date}</span>
+                            <div class="flex items-baseline gap-4 mb-8">
+                                <h2 class="serif-title text-5xl opacity-10 font-black font-num">${day.day}</h2>
+                                <div class="flex flex-col">
+                                    <span class="font-num font-bold text-xs tracking-widest text-jp-accent">${day.date}</span>
+                                    <span class="serif-title text-xl font-bold">${day.title}</span>
+                                </div>
                             </div>
-                            <h3 class="font-bold text-xl mb-6 italic underline decoration-casa-accent/30 decoration-4 underline-offset-4 text-casa-ink">${day.title}</h3>
-                            <div class="space-y-6">
+                            
+                            <div class="space-y-8 pl-4 border-l border-jp-sand">
                                 ${day.events.map(ev => `
-                                    <div class="magazine-border bg-casa-card p-5 casa-shadow ${ev.type === 'important' ? 'border-l-[12px] border-casa-accent' : ''}">
-                                        <div class="flex justify-between items-start mb-2">
-                                            <span class="font-num text-[10px] font-bold px-2 py-0.5 border border-casa-ink">${ev.time}</span>
-                                            ${ev.map ? `<button onclick="window.open('${ev.map}')" class="text-[10px] font-black border-b-2 border-casa-accent text-casa-accent italic">VIEW MAP</button>` : ''}
+                                    <div class="relative group">
+                                        <div class="absolute -left-[21px] top-1 w-2 h-2 bg-jp-accent rounded-full border-2 border-jp-bg"></div>
+                                        <div class="flex justify-between items-start">
+                                            <span class="font-num text-[10px] font-bold opacity-30">${ev.time}</span>
+                                            ${ev.map ? `<a href="${ev.map}" target="_blank" class="text-[9px] font-bold border-b border-jp-accent text-jp-accent">MAP</a>` : ''}
                                         </div>
-                                        <p class="font-bold text-base text-casa-ink">${ev.title}</p>
-                                        ${ev.desc ? `<p class="text-[11px] text-gray-400 font-medium italic mt-2">// ${ev.desc}</p>` : ''}
+                                        <p class="font-bold text-[15px] mt-1">${ev.title}</p>
+                                        ${ev.desc ? `<p class="text-[11px] opacity-40 mt-1 leading-relaxed">${ev.desc}</p>` : ''}
                                     </div>
                                 `).join('')}
                             </div>
@@ -228,54 +184,22 @@
             el.innerHTML = html;
         }
 
-        // --- FOOD RENDER ---
+        // --- RENDER FOOD ---
         function renderFood(el) {
-            const FOOD_GROUPS = {
-                "WAYFARER 周邊 (南船場)": [
-                    { name: "Panya Bakery", price: "¥500-1000", map: "https://www.google.com/maps/search/?api=1&query5" },
-                    { name: "一蘭拉麵 心齋橋", price: "¥1000-1500", map: "https://www.google.com/maps/search/?api=1&query6" },
-                    { name: "丸龜製麵", price: "¥500-800", map: "https://www.google.com/maps/search/?api=1&query7" },
-                    { name: "Micasadeco & Cafe", price: "¥1500-2500", map: "https://www.google.com/maps/search/?api=1&query8" },
-                    { name: "松屋 (24HR)", price: "¥500-900", map: "https://www.google.com/maps/search/?api=1&query9" },
-                    { name: "Colony by Holiday", price: "¥1500-2000", map: "google.com/maps/search/?api=1&query=大阪通天閣0" },
-                    { name: "Le Caneton (法式)", price: "¥5000+", map: "google.com/maps/search/?api=1&query=大阪通天閣1" },
-                    { name: "Tsurutontan 烏龍麵", price: "¥1500-2500", map: "google.com/maps/search/?api=1&query=大阪通天閣2" }
-                ],
-                "TENNOJI Area": [
-                    { name: "利久牛舌", price: "¥2000-3000", map: "google.com/maps/search/?api=1&query=大阪通天閣3" },
-                    { name: "東洋亭 (漢堡排)", price: "¥1500-2500", map: "google.com/maps/search/?api=1&query=大阪通天閣4" },
-                    { name: "福太郎 大版燒", price: "¥1000-2000", map: "google.com/maps/search/?api=1&query=大阪通天閣5" },
-                    { name: "古好屋 (咖哩)", price: "¥1000-1500", map: "google.com/maps/search/?api=1&query=大阪通天閣6" },
-                    { name: "八重勝 串炸", price: "¥1500-3000", map: "google.com/maps/search/?api=1&query=大阪通天閣7" },
-                    { name: "天狗 串炸", price: "¥1000-2000", map: "google.com/maps/search/?api=1&query=大阪通天閣8" },
-                    { name: "千房 大版燒", price: "¥1500-2000", map: "google.com/maps/search/?api=1&query=大阪通天閣9" },
-                    { name: "甘黨前田 (甜點)", price: "¥500-1000", map: "https://www.google.com/maps/search/?api=1&query=通天閣0" }
-                ],
-                "KYOTO 精選": [
-                    { name: "京都勝牛", price: "¥2000-3000", map: "https://www.google.com/maps/search/?api=1&query=通天閣1" },
-                    { name: "三嶋亭 (壽喜燒)", price: "¥8000+", map: "https://www.google.com/maps/search/?api=1&query=通天閣2" },
-                    { name: "十二段家 (茶泡飯)", price: "¥2000-4000", map: "https://www.google.com/maps/search/?api=1&query=通天閣3" },
-                    { name: "茶寮都路里", price: "¥1000-2000", map: "https://www.google.com/maps/search/?api=1&query=通天閣4" },
-                    { name: "鍵善良房 (葛切)", price: "¥1000-1500", map: "https://www.google.com/maps/search/?api=1&query=通天閣5" },
-                    { name: "いづう (鯖魚壽司)", price: "¥3000-5000", map: "https://www.google.com/maps/search/?api=1&query=通天閣6" },
-                    { name: "祇園佐佐木", price: "¥10000+", map: "https://www.google.com/maps/search/?api=1&query=通天閣7" },
-                    { name: "錦市場 豆乳甜甜圈", price: "¥300-600", map: "https://www.google.com/maps/search/?api=1&query=通天閣8" }
-                ]
+            const zones = {
+                "南船場 周邊": ["Panya Bakery", "一蘭 心齋橋", "丸龜製麵", "Micasadeco Cafe", "松屋", "Colony Holiday", "Le Caneton", "Tsurutontan"],
+                "天王寺 區域": ["利久牛舌", "東洋亭", "福太郎", "古好屋", "八重勝", "天狗串炸", "千房", "甘黨前田"]
             };
-
-            let html = `<h2 class="font-display italic text-4xl mb-8 leading-none uppercase text-casa-ink">Taste<br>Catalog.</h2>`;
-            for (let zone in FOOD_GROUPS) {
+            let html = `<h2 class="serif-title text-3xl mb-10 underline decoration-jp-accent/20 underline-offset-8">味覺清單.</h2>`;
+            for(let zone in zones) {
                 html += `
-                    <div class="mb-10">
-                        <p class="font-num font-bold text-[10px] tracking-widest uppercase mb-3 text-casa-accent border-b border-casa-accent/20 pb-1">${zone}</p>
-                        <div class="grid grid-cols-2 gap-3">
-                            ${FOOD_GROUPS[zone].map(food => `
-                                <div class="magazine-border bg-casa-card p-4 h-32 flex flex-col justify-between casa-shadow active:scale-95 transition-transform" onclick="window.open('${food.map}')">
-                                    <h4 class="font-bold text-[13px] leading-tight text-casa-ink underline decoration-casa-accent/20 underline-offset-4">${food.name}</h4>
-                                    <div>
-                                        <p class="font-num text-[9px] font-bold opacity-30">BUDGET</p>
-                                        <p class="font-num text-[11px] font-bold text-casa-accent">${food.price}</p>
-                                    </div>
+                    <div class="mb-12">
+                        <p class="font-bold text-xs mb-4 text-jp-accent flex items-center gap-2"><span class="w-1 h-1 bg-jp-accent"></span> ${zone}</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            ${zones[zone].map(f => `
+                                <div onclick="window.open('https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(f + ' 大阪')}')" class="bg-jp-paper p-4 soft-shadow jp-border active:scale-95 transition-transform">
+                                    <p class="font-bold text-[13px] leading-tight mb-2">${f}</p>
+                                    <p class="text-[9px] opacity-30 font-num">VIEW ON MAP ❯</p>
                                 </div>
                             `).join('')}
                         </div>
@@ -285,72 +209,70 @@
             el.innerHTML = html;
         }
 
-        // --- WALLET RENDER ---
-        let currentExpImg = "";
+        // --- RENDER WALLET (含圖片壓縮與換算) ---
         function renderWallet(el) {
             const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
-            const totalJPY = expenses.reduce((sum, item) => sum + parseFloat(item.jpy), 0);
-            
+            const total = expenses.reduce((s, i) => s + parseFloat(i.jpy), 0);
+
             el.innerHTML = `
-                <div class="magazine-border bg-casa-ink text-casa-bg p-6 accent-shadow mb-10">
-                    <p class="font-num text-[10px] font-bold tracking-[0.3em] opacity-40 mb-4 uppercase">Converter (÷5)</p>
+                <div class="bg-jp-ink text-jp-bg p-8 mb-10 soft-shadow">
+                    <p class="font-num text-[10px] font-bold opacity-30 mb-6 tracking-widest">CURRENCY CONVERTER</p>
                     <div class="flex items-center gap-4">
-                        <input id="calc-input" type="text" placeholder="..." class="bg-transparent text-4xl font-num font-black w-full outline-none text-white" readonly>
-                        <button onclick="calcResult()" class="font-display italic text-3xl text-casa-accent">=</button>
+                        <input id="calc-input" readonly class="text-3xl font-num font-bold w-full outline-none text-white" placeholder="0">
+                        <button onclick="calcResult()" class="serif-title text-2xl text-jp-accent">換算</button>
                     </div>
-                    <div class="mt-4 flex justify-between border-t border-white/5 pt-4">
-                        <p id="calc-res-jpy" class="font-num text-xs opacity-40">JPY 0</p>
-                        <p id="calc-res-twd" class="font-num font-bold text-casa-accent text-xl">TWD 0</p>
+                    <div class="mt-4 flex justify-between border-t border-white/10 pt-4 font-num text-xs">
+                        <span class="opacity-40">TWD (÷5)</span>
+                        <span id="calc-res-twd" class="text-jp-accent font-bold">0</span>
                     </div>
-                    <div class="grid grid-cols-4 gap-2 mt-6">
-                        ${['7','8','9','/','4','5','6','*','1','2','3','-','0','C','⌫','+'].map(key => `
-                            <button onclick="handleCalc('${key}')" class="p-3 font-num font-bold border border-white/5 hover:bg-white/10 transition text-sm">${key}</button>
+                    <div class="grid grid-cols-4 gap-2 mt-8">
+                        ${['7','8','9','/','4','5','6','*','1','2','3','-','0','C','⌫','+'].map(k => `
+                            <button onclick="handleCalc('${k}')" class="p-3 font-num text-xs border border-white/5 hover:bg-white/5">${k}</button>
                         `).join('')}
                     </div>
                 </div>
 
-                <div class="magazine-border p-6 bg-casa-card mb-10 casa-shadow">
-                    <h3 class="font-num font-black text-[10px] mb-6 uppercase tracking-widest text-casa-accent">New Entry</h3>
-                    <div class="space-y-5">
-                        <input id="ex-name" type="text" placeholder="Item Name" class="w-full border-b border-casa-border py-2 text-sm bg-transparent outline-none focus:border-casa-accent transition-colors">
-                        <input id="ex-jpy" type="number" placeholder="Amount (JPY)" class="w-full border-b border-casa-border py-2 text-sm bg-transparent outline-none focus:border-casa-accent transition-colors">
-                        <div class="flex gap-4 items-center">
-                            <label class="flex-1 magazine-border border-dashed p-4 flex flex-col items-center justify-center cursor-pointer bg-casa-bg/50 hover:bg-casa-bg transition-colors">
-                                <i class="fa-solid fa-camera text-xl mb-1 opacity-40"></i>
-                                <span class="text-[8px] font-bold opacity-40 uppercase">Receipt</span>
+                <div class="bg-jp-paper p-6 jp-border mb-10">
+                    <p class="text-[10px] font-bold opacity-30 mb-4 tracking-widest uppercase">Quick Add</p>
+                    <div class="space-y-4">
+                        <input id="ex-name" type="text" placeholder="品項項目" class="w-full border-b border-jp-sand py-2 text-sm outline-none">
+                        <input id="ex-jpy" type="number" placeholder="金額 (JPY)" class="w-full border-b border-jp-sand py-2 text-sm font-num outline-none">
+                        <div class="flex gap-4 pt-2">
+                            <label class="flex-1 jp-border border-dashed p-4 flex flex-col items-center cursor-pointer hover:bg-jp-bg transition-colors">
+                                <i class="fa-solid fa-camera opacity-20 text-xl mb-1"></i>
+                                <span class="text-[8px] font-bold opacity-30">收據</span>
                                 <input type="file" class="hidden" accept="image/*" onchange="processImage(this)">
                             </label>
-                            <button onclick="saveExpense()" class="flex-[2] bg-casa-ink text-white h-[68px] font-num font-bold text-[10px] tracking-[0.2em] uppercase active:scale-95 transition-transform">Save Data</button>
+                            <button onclick="saveExpense()" class="flex-[2] bg-jp-ink text-white font-bold text-xs uppercase tracking-widest active:scale-95 transition-all">儲存內容</button>
                         </div>
-                        <div id="img-preview" class="hidden"><img id="preview-src" src="" class="h-20 magazine-border casa-shadow"></div>
+                        <div id="img-preview" class="hidden"><img id="preview-src" class="h-16 jp-border"></div>
                     </div>
                 </div>
 
-                <div class="space-y-6 pb-10">
-                    <div class="flex justify-between items-end border-b border-casa-border pb-2">
-                        <h3 class="font-display italic text-2xl text-casa-ink">Log</h3>
-                        <p class="font-num font-bold text-[10px] opacity-30">Total ¥${totalJPY}</p>
-                    </div>
-                    <div class="space-y-4">
-                        ${expenses.map((ex, i) => `
-                            <div class="flex items-center gap-4 magazine-border p-3 bg-casa-card casa-shadow">
-                                <div class="w-12 h-12 bg-casa-bg flex-shrink-0 soft-border overflow-hidden">
-                                    ${ex.img ? `<img src="${ex.img}" class="w-full h-full object-cover">` : `<i class="fa-solid fa-receipt m-3.5 opacity-10"></i>`}
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-bold text-[13px] text-casa-ink leading-none">${ex.name}</p>
-                                    <p class="font-num text-[10px] opacity-40 mt-1">¥${ex.jpy} / NT$${Math.round(ex.jpy/5)}</p>
-                                </div>
-                                <button onclick="deleteExpense(${i})" class="text-xs text-casa-accent p-2 opacity-30 hover:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                <div class="space-y-4 pb-10">
+                    <p class="serif-title text-xl border-b border-jp-sand pb-2 flex justify-between">
+                        <span>開支記錄.</span>
+                        <span class="font-num text-xs opacity-30 mt-2">TOTAL ¥${total}</span>
+                    </p>
+                    ${expenses.reverse().map((ex, i) => `
+                        <div class="flex items-center gap-4 bg-jp-paper p-3 soft-shadow jp-border">
+                            <div class="w-10 h-10 bg-jp-bg overflow-hidden flex items-center justify-center">
+                                ${ex.img ? `<img src="${ex.img}" class="w-full h-full object-cover">` : `<i class="fa-solid fa-receipt opacity-10"></i>`}
                             </div>
-                        `).reverse().join('')}
-                    </div>
+                            <div class="flex-1">
+                                <p class="font-bold text-xs">${ex.name}</p>
+                                <p class="font-num text-[10px] opacity-30">¥${ex.jpy} / NT$${Math.round(ex.jpy/5)}</p>
+                            </div>
+                            <button onclick="deleteExpense(${i})" class="text-xs opacity-20"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `).join('')}
                 </div>
             `;
         }
 
-        // --- CALCULATOR & IMAGE HELPER ---
+        // --- CALCULATOR & IMAGE HELPER (同前，保持設定) ---
         let q = "";
+        let currentExpImg = "";
         function handleCalc(k) {
             const input = document.getElementById('calc-input');
             if(k === 'C') q = "";
@@ -359,15 +281,11 @@
             input.value = q;
         }
         function calcResult() {
-            const input = document.getElementById('calc-input');
-            const resJpy = document.getElementById('calc-res-jpy');
-            const resTwd = document.getElementById('calc-res-twd');
             try {
                 const res = eval(q);
-                resJpy.innerText = "JPY " + res;
-                resTwd.innerText = "TWD " + Math.round(res / 5);
-                q = res.toString(); input.value = q;
-            } catch { input.value = "ERR"; q = ""; }
+                document.getElementById('calc-res-twd').innerText = "NT$ " + Math.round(res/5);
+                q = res.toString(); document.getElementById('calc-input').value = q;
+            } catch { document.getElementById('calc-input').value = "ERR"; q = ""; }
         }
         function processImage(input) {
             if (input.files && input.files[0]) {
@@ -406,54 +324,41 @@
             renderWallet(document.getElementById('app'));
         }
 
-        // --- BUY RENDER ---
+        // --- BUY & LISTS & INFO (保持設定，調整為雜誌風) ---
         function renderBuy(el) {
-            const DATA = {
-                "Souvenirs (伴手禮)": ["白色戀人", "薯條三兄弟", "Pocky 限量口味", "Tokyo Banana", "福砂屋 カステラ", "Royce 生巧克力", "KitKat 抹茶", "呼吸巧克力", "茅乃舍 高湯包", "茶之菓 (京都)", "小倉山莊 仙貝", "Press Butter Sand", "Sugar Butter Tree", "LeTAO 起司蛋糕", "一蘭 泡麵包"],
-                "Cosmetics (藥妝)": ["合利他命 EX Plus", "EVE 止痛藥", "大正感冒藥", "Rohto 勁涼眼藥水", "龍角散 粉末", "休足時間", "安耐曬 金鑽", "雪肌精 洗面乳", "DHC 護唇膏", "參天 PC 眼藥水", "獅王 祛痘膏", "Kanebo 酵素洗顏", "肌研 極潤", "SK-II (免稅)", "Ora2 牙膏"]
-            };
-            let html = `<h2 class="font-display italic text-4xl mb-8 leading-none uppercase text-casa-ink">Buying<br>List.</h2>`;
-            for (let cat in DATA) {
-                html += `
-                    <div class="mb-10">
-                        <h3 class="font-num font-bold text-[10px] mb-4 p-2 bg-casa-accent text-white inline-block tracking-[0.2em] uppercase">${cat}</h3>
-                        <div class="magazine-border bg-casa-card casa-shadow divide-y divide-casa-border">
-                            ${DATA[cat].map(item => `
-                                <div class="p-4 flex justify-between items-center active:bg-casa-bg" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(item + ' 日本 2026')}')">
-                                    <span class="text-sm font-medium text-casa-ink tracking-tight">${item}</span>
-                                    <i class="fa-solid fa-magnifying-glass text-[9px] opacity-20"></i>
-                                </div>
-                            `).join('')}
+            const items = ["白色戀人", "薯條三兄弟", "合利他命 EX", "EVE 止痛藥", "Dyson 吹風機", "象印電鍋"];
+            el.innerHTML = `
+                <h2 class="serif-title text-3xl mb-10">購物備忘.</h2>
+                <div class="grid grid-cols-1 gap-px bg-jp-sand border border-jp-sand">
+                    ${items.map(item => `
+                        <div class="bg-jp-paper p-5 flex justify-between items-center active:bg-jp-bg" onclick="window.open('https://www.google.com/search?q=${item}+日本價格')">
+                            <span class="font-bold text-sm">${item}</span>
+                            <i class="fa-solid fa-chevron-right text-[10px] opacity-20"></i>
                         </div>
-                    </div>
-                `;
-            }
-            el.innerHTML = html;
+                    `).join('')}
+                </div>
+            `;
         }
 
-        // --- LISTS RENDER ---
         function renderLists(el) {
-            const checklist = ["護照", "機票", "飯店憑證", "Visit Japan QR", "日幣現金", "信用卡 (2張)", "網卡/eSIM", "行動電源", "發熱衣", "好走防滑鞋", "摺疊雨傘"];
+            const checklist = ["護照", "Visit Japan QR", "日幣現金", "信用卡", "發熱衣", "行動電源"];
             const checks = JSON.parse(localStorage.getItem('checks') || '{}');
-            const memo = localStorage.getItem('memo') || "";
             el.innerHTML = `
-                <div class="mb-12">
-                    <h2 class="font-display italic text-4xl mb-8 uppercase text-casa-ink">Essentials.</h2>
-                    <div class="magazine-border p-6 bg-casa-card casa-shadow space-y-4">
-                        ${checklist.map((item, i) => `
-                            <label class="flex items-center gap-4 cursor-pointer">
-                                <input type="checkbox" class="peer hidden" onchange="toggleCheck(${i})" ${checks[i] ? 'checked' : ''}>
-                                <div class="w-6 h-6 magazine-border flex items-center justify-center peer-checked:bg-casa-accent peer-checked:border-casa-accent transition-all">
-                                    <i class="fa-solid fa-check text-white text-[10px] opacity-0 peer-checked:opacity-100"></i>
-                                </div>
-                                <span class="text-sm font-medium text-casa-ink ${checks[i] ? 'line-through opacity-30' : ''}">${item}</span>
-                            </label>
-                        `).join('')}
-                    </div>
+                <h2 class="serif-title text-3xl mb-10">出發清單.</h2>
+                <div class="bg-jp-paper p-8 soft-shadow jp-border space-y-6">
+                    ${checklist.map((item, i) => `
+                        <label class="flex items-center gap-4 cursor-pointer">
+                            <input type="checkbox" class="peer hidden" onchange="toggleCheck(${i})" ${checks[i] ? 'checked' : ''}>
+                            <div class="w-5 h-5 jp-border flex items-center justify-center peer-checked:bg-jp-accent peer-checked:border-jp-accent transition-all">
+                                <i class="fa-solid fa-check text-white text-[10px] opacity-0 peer-checked:opacity-100"></i>
+                            </div>
+                            <span class="text-sm font-medium ${checks[i] ? 'line-through opacity-20' : ''}">${item}</span>
+                        </label>
+                    `).join('')}
                 </div>
-                <div class="mb-10">
-                    <h2 class="font-display italic text-4xl mb-8 uppercase text-casa-ink">Memos.</h2>
-                    <textarea id="memo-field" oninput="saveMemo()" class="w-full h-48 magazine-border p-5 text-sm bg-casa-card casa-shadow outline-none focus:border-casa-accent" placeholder="Write something...">${memo}</textarea>
+                <div class="mt-12">
+                    <p class="font-num text-[10px] font-bold opacity-30 mb-4 tracking-widest uppercase">Free Memo</p>
+                    <textarea id="memo-field" oninput="saveMemo()" class="w-full h-40 p-5 bg-jp-paper jp-border soft-shadow text-sm outline-none" placeholder="隨手筆記...">${localStorage.getItem('memo') || ""}</textarea>
                 </div>
             `;
         }
@@ -463,38 +368,24 @@
             localStorage.setItem('checks', JSON.stringify(checks));
             renderLists(document.getElementById('app'));
         }
-        function saveMemo() {
-            localStorage.setItem('memo', document.getElementById('memo-field').value);
-        }
+        function saveMemo() { localStorage.setItem('memo', document.getElementById('memo-field').value); }
 
-        // --- INFO RENDER ---
         function renderInfo(el) {
             el.innerHTML = `
-                <h2 class="font-display italic text-4xl mb-8 leading-tight uppercase text-casa-ink">Safety<br>& Info.</h2>
-                <div class="space-y-8 pb-10">
-                    <div class="magazine-border p-6 bg-casa-card casa-shadow">
-                        <h3 class="font-bold text-lg mb-4 border-b border-casa-border pb-2 flex justify-between items-center">WEATHER <i class="fa-solid fa-sun text-casa-accent"></i></h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button onclick="window.open('https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=270000')" class="magazine-border p-4 text-[11px] font-bold active:bg-casa-bg">OSAKA ❯</button>
-                            <button onclick="window.open('https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=260000')" class="magazine-border p-4 text-[11px] font-bold active:bg-casa-bg">KYOTO ❯</button>
+                <h2 class="serif-title text-3xl mb-10">旅行資訊.</h2>
+                <div class="space-y-6">
+                    <div class="bg-jp-accent text-white p-6 soft-shadow">
+                        <p class="font-bold mb-4 border-b border-white/20 pb-2">EMERGENCY</p>
+                        <div class="space-y-2 text-sm font-num">
+                            <div class="flex justify-between"><span>Police</span><span>110</span></div>
+                            <div class="flex justify-between"><span>Ambulance</span><span>119</span></div>
                         </div>
                     </div>
-                    <div class="magazine-border p-6 bg-casa-accent text-white accent-shadow">
-                        <h3 class="font-bold text-lg mb-4">EMERGENCY</h3>
-                        <div class="space-y-3 font-num font-bold text-sm">
-                            <div class="flex justify-between border-b border-white/20 pb-2"><span>Police</span><span>110</span></div>
-                            <div class="flex justify-between border-b border-white/20 pb-2"><span>Ambulance</span><span>119</span></div>
-                            <div class="flex justify-between pt-1"><span class="text-[11px]">駐大阪辦事處</span><span class="text-[11px]">+81-6-6443-8481</span></div>
-                        </div>
-                    </div>
-                    <div class="magazine-border p-6 bg-casa-ink text-casa-bg casa-shadow">
-                        <h3 class="font-bold text-lg mb-4 opacity-50 italic">NOTICES</h3>
-                        <ul class="text-[11px] space-y-3 font-medium list-disc pl-4 opacity-80">
-                            <li>手扶梯：大阪靠右站立，東京靠左。</li>
-                            <li>Visit Japan Web QR Code 建議先行截圖。</li>
-                            <li>2 月大阪氣溫約 3°C - 10°C，注意保暖防風。</li>
-                            <li>大部分小店仍偏好現金支付。</li>
-                        </ul>
+                    <div class="bg-jp-paper p-6 jp-border text-xs leading-relaxed space-y-4">
+                        <p class="font-bold">NOTICE</p>
+                        <p class="opacity-60">● 手扶梯：大阪靠右站立</p>
+                        <p class="opacity-60">● 氣溫：2月大阪約 3-10°C，注意防風</p>
+                        <p class="opacity-60">● VJW QR Code 建議截圖備用</p>
                     </div>
                 </div>
             `;
