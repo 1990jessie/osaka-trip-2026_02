@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Archive / OSAKA 2026</title>
+    <title>OSAKA / ARCHIVE 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'casa-bg': '#FDFBF7', // 暖色系紙張感
-                        'casa-black': '#1A1A1A',
-                        'casa-accent': '#D62828', // 雜誌常用的標誌紅
-                        'casa-gold': '#B59410'
+                        'casa-bg': '#F7F3F0',    // 柔和和紙色
+                        'casa-ink': '#332F2E',   // 深炭灰文字
+                        'casa-accent': '#AF5F48', // 輕柔鐵鏽紅
+                        'casa-border': '#D1C7BD', // 淺沙色邊框
+                        'casa-card': '#FFFFFF'
                     },
                     fontFamily: {
                         'jp': ['Noto Sans JP', 'sans-serif'],
@@ -29,61 +30,72 @@
     </script>
 
     <style>
-        body { background-color: #FDFBF7; color: #1A1A1A; font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
-        .magazine-border { border: 1.5px solid #1A1A1A; }
-        .active-tab { color: #D62828 !important; border-bottom: 3px solid #D62828; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .ticket-dash { border-top: 1.5px dashed #1A1A1A; position: relative; }
+        body { background-color: #F7F3F0; color: #332F2E; font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
+        .magazine-border { border: 1.2px solid #332F2E; }
+        .soft-border { border: 1px solid #D1C7BD; }
+        .active-tab { color: #AF5F48 !important; }
+        .ticket-dash { border-top: 1.2px dashed #332F2E; position: relative; }
         .ticket-dash::before, .ticket-dash::after {
             content: ''; position: absolute; top: -8px; width: 16px; height: 16px; 
-            background: #FDFBF7; border-radius: 50%; border: 1.5px solid #1A1A1A;
+            background: #F7F3F0; border-radius: 50%; border: 1.2px solid #332F2E;
         }
         .ticket-dash::before { left: -10px; }
         .ticket-dash::after { right: -10px; }
-        .img-preview-container { filter: grayscale(100%) contrast(110%); transition: filter 0.3s; }
-        .img-preview-container:hover { filter: none; }
+        
+        /* 柔化陰影設計 */
+        .casa-shadow {
+            box-shadow: 6px 6px 0px rgba(51, 47, 46, 0.08);
+        }
+        .accent-shadow {
+            box-shadow: 6px 6px 0px rgba(175, 95, 72, 0.15);
+        }
+        
+        /* 捲軸美化 */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #F7F3F0; }
+        ::-webkit-scrollbar-thumb { background: #D1C7BD; border-radius: 10px; }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-28">
 
-    <header class="p-6 pt-10 border-b-2 border-casa-black bg-casa-bg sticky top-0 z-40">
+    <header class="p-6 pt-12 border-b border-casa-border bg-casa-bg/80 backdrop-blur-md sticky top-0 z-40">
         <div class="flex justify-between items-end">
             <div>
-                <p class="font-num text-[10px] tracking-[0.4em] uppercase opacity-60">Vol. 2026 / Special Edition</p>
-                <h1 class="font-display italic text-5xl leading-none mt-1">Osaka.</h1>
+                <p class="font-num text-[9px] tracking-[0.4em] uppercase opacity-50 font-bold">Documentary / 2026</p>
+                <h1 class="font-display italic text-5xl leading-none mt-1 text-casa-ink">Osaka.</h1>
             </div>
             <div class="text-right pb-1">
-                <span id="current-date" class="font-num font-bold text-xs">FEB 13 - 17</span>
+                <span class="font-num font-bold text-xs px-2 py-1 bg-casa-ink text-white">FEB 13 - 17</span>
             </div>
         </div>
     </header>
 
-    <main id="app" class="p-5">
+    <main id="app" class="p-5 animate-fadeIn">
         </main>
 
-    <nav class="fixed bottom-0 left-0 w-full bg-casa-bg border-t-2 border-casa-black px-2 py-4 z-50 flex justify-around items-center backdrop-blur-md bg-opacity-90">
-        <button onclick="router('plan')" id="nav-plan" class="flex flex-col items-center gap-1 opacity-40 transition-all">
-            <i class="fa-solid fa-map text-xl"></i><span class="text-[9px] font-bold">PLAN</span>
+    <nav class="fixed bottom-0 left-0 w-full bg-casa-bg border-t border-casa-border px-2 py-5 z-50 flex justify-around items-center backdrop-blur-xl bg-opacity-95">
+        <button onclick="router('plan')" id="nav-plan" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
+            <i class="fa-solid fa-map-location text-xl"></i><span class="text-[9px] font-bold">PLAN</span>
         </button>
-        <button onclick="router('food')" id="nav-food" class="flex flex-col items-center gap-1 opacity-40 transition-all">
+        <button onclick="router('food')" id="nav-food" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
             <i class="fa-solid fa-utensils text-xl"></i><span class="text-[9px] font-bold">FOOD</span>
         </button>
-        <button onclick="router('wallet')" id="nav-wallet" class="flex flex-col items-center gap-1 opacity-40 transition-all">
+        <button onclick="router('wallet')" id="nav-wallet" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
             <i class="fa-solid fa-calculator text-xl"></i><span class="text-[9px] font-bold">WALLET</span>
         </button>
-        <button onclick="router('buy')" id="nav-buy" class="flex flex-col items-center gap-1 opacity-40 transition-all">
+        <button onclick="router('buy')" id="nav-buy" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
             <i class="fa-solid fa-bag-shopping text-xl"></i><span class="text-[9px] font-bold">BUY</span>
         </button>
-        <button onclick="router('lists')" id="nav-lists" class="flex flex-col items-center gap-1 opacity-40 transition-all">
+        <button onclick="router('lists')" id="nav-lists" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
             <i class="fa-solid fa-list-check text-xl"></i><span class="text-[9px] font-bold">LISTS</span>
         </button>
-        <button onclick="router('info')" id="nav-info" class="flex flex-col items-center gap-1 opacity-40 transition-all">
+        <button onclick="router('info')" id="nav-info" class="flex flex-col items-center gap-1 opacity-30 transition-all duration-300">
             <i class="fa-solid fa-circle-info text-xl"></i><span class="text-[9px] font-bold">INFO</span>
         </button>
     </nav>
 
     <script>
-        // --- DATA SET ---
+        // --- DATA ---
         const FLIGHTS = [
             { type: 'DEPARTURE', date: '2026.02.13', flight: 'D7378', route: 'TPE ❯ KIX', time: '15:40 ❯ 19:20' },
             { type: 'RETURN', date: '2026.02.17', flight: 'D7379', route: 'KIX ❯ TPE', time: '20:45 ❯ 23:05' }
@@ -92,49 +104,48 @@
         const HOTEL = {
             name: "Wayfarer Matsu",
             address: "日本大阪府大阪市中央區南船場1丁目2-7",
-            map: "https://www.google.com/maps/search/?api=1&query=Wayfarer+Matsu+Osaka"
+            map: "https://www.google.com/maps0"
         };
 
         const ITINERARY = [
             { day: "01", date: "2026/02/13 (五)", title: "抵達與休息", events: [
-                { time: "19:20", title: "抵達關西機場 (KIX)", type: "trans", map: "https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" },
-                { time: "20:30", title: "搭乘 INNN 接駁車前往飯店", type: "trans", map: HOTEL.map },
-                { time: "21:30", title: "飯店 Check-in & 超市採買", type: "food", desc: "Wayfarer Matsu 附近超市", map: "https://www.google.com/maps/search/?api=1&query=supermarket+near+Wayfarer+Matsu+Osaka" }
+                { time: "19:20", title: "抵達關西機場 (KIX)", type: "trans", map: "https://www.google.com/maps1" },
+                { time: "20:30", title: "搭乘接駁車前往飯店", type: "trans", map: HOTEL.map },
+                { time: "21:30", title: "飯店 Check-in & 超市採買", type: "food", desc: "Wayfarer Matsu 附近超市", map: "https://www.google.com/maps2" }
             ]},
             { day: "02", date: "2026/02/14 (六)", title: "天王寺深度遊", events: [
                 { time: "09:30", title: "飯店集合出發", type: "important" },
-                { time: "10:00", title: "四天王寺參拜", type: "sight", desc: "參拜金堂、寺院散步", map: "https://www.google.com/maps/search/?api=1&query=Shitennoji+Temple+Osaka" },
-                { time: "11:15", title: "午餐：天王寺周邊", type: "food", desc: "HARUKAS 美食街", map: "https://www.google.com/maps/search/?api=1&query=Abeno+Harukas+Dining" },
-                { time: "14:00", title: "一心寺參拜", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Isshin-ji+Temple+Osaka" },
-                { time: "15:15", title: "新世界散策", type: "sight", desc: "通天閣周邊", map: "https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Shinsekai" },
-                { time: "18:00", title: "晚餐：難波地區", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Namba+Station+Restaurants" }
+                { time: "10:00", title: "四天王寺參拜", type: "sight", map: "https://www.google.com/maps3" },
+                { time: "11:15", title: "午餐：天王寺周邊", type: "food", desc: "HARUKAS 美食街", map: "https://www.google.com/maps4" },
+                { time: "15:15", title: "新世界散策", type: "sight", desc: "通天閣周邊", map: "https://www.google.com/maps5" },
+                { time: "18:00", title: "晚餐：難波地區", type: "food", map: "https://www.google.com/maps6" }
             ]},
             { day: "03", date: "2026/02/15 (日)", title: "京都古都市集", events: [
-                { time: "08:00", title: "出發梅田站", type: "trans", map: "https://www.google.com/maps/search/?api=1&query=Osaka+Umeda+Station" },
-                { time: "09:55", title: "百萬遍知恩寺", type: "sight", desc: "手作市集 (建議1.5-2hr)", map: "https://www.google.com/maps/search/?api=1&query=Hyakumanben+Chion-ji+Temple" },
-                { time: "12:10", title: "午餐：祇園一帶", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Gion+Kyoto+Restaurants" },
-                { time: "13:30", title: "清水寺區域", type: "sight", desc: "二年坂・三年坂", map: "https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Kyoto" },
-                { time: "14:50", title: "八坂神社", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Yasaka+Shrine+Kyoto" },
-                { time: "16:00", title: "牛奉行 (京都美食)", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Gyubugyo+Kyoto" }
+                { time: "08:00", title: "出發梅田站", type: "trans", map: "https://www.google.com/maps7" },
+                { time: "09:55", title: "百萬遍知恩寺", type: "sight", desc: "手作市集 (建議1.5-2hr)", map: "https://www.google.com/maps8" },
+                { time: "13:30", title: "清水寺區域", type: "sight", desc: "二年坂・三年坂", map: "https://www.google.com/maps9" },
+                { time: "16:00", title: "牛奉行 (京都美食)", type: "food", map: "https://www.google.com/maps/search/?api=1&query0" }
             ]},
             { day: "04", date: "2026/02/16 (一)", title: "溫泉休息日", events: [
-                { time: "10:45", title: "大阪 BAY TOWER 咖啡", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Osaka+Bay+Tower" },
-                { time: "13:30", title: "空庭溫泉", type: "important", desc: "泡湯、浴衣拍照、休息", map: "https://www.google.com/maps/search/?api=1&query=Solaniwa+Onsen+Osaka" },
-                { time: "17:15", title: "晚餐：溫泉館內", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Solaniwa+Onsen+Food+Court" }
+                { time: "10:45", title: "大阪 BAY TOWER 咖啡", type: "sight", map: "https://www.google.com/maps/search/?api=1&query1" },
+                { time: "13:30", title: "空庭溫泉", type: "important", desc: "泡湯、浴衣拍照、休息", map: "https://www.google.com/maps/search/?api=1&query2" },
+                { time: "17:15", title: "晚餐：溫泉館內", type: "food", map: "https://www.google.com/maps/search/?api=1&query3" }
             ]},
             { day: "05", date: "2026/02/17 (二)", title: "購物與回程", events: [
-                { time: "AM", title: "心齋橋/難波購物", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Shinsaibashi-suji+Shopping+Street" },
-                { time: "16:00", title: "搭乘接駁車往機場", type: "trans" },
+                { time: "AM", title: "心齋橋/難波購物", type: "sight", map: "https://www.google.com/maps/search/?api=1&query4" },
                 { time: "20:45", title: "班機起飛返台", type: "important" }
             ]}
         ];
 
-        // --- ROUTING LOGIC ---
+        // --- ROUTER ---
         function router(target) {
-            const navButtons = document.querySelectorAll('nav button');
-            navButtons.forEach(btn => btn.classList.replace('opacity-100', 'opacity-40'));
-            document.getElementById(`nav-${target}`).classList.replace('opacity-40', 'opacity-100');
-            document.getElementById(`nav-${target}`).classList.add('text-casa-accent');
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('opacity-100', 'text-casa-accent');
+                btn.classList.add('opacity-30');
+            });
+            const active = document.getElementById(`nav-${target}`);
+            active.classList.replace('opacity-30', 'opacity-100');
+            active.classList.add('text-casa-accent');
             
             window.scrollTo(0, 0);
             render(target);
@@ -150,26 +161,25 @@
             if (page === 'info') renderInfo(container);
         }
 
-        // --- RENDER FUNCTIONS ---
-
+        // --- PLAN RENDER ---
         function renderPlan(el) {
             let html = `
                 <div class="mb-10 space-y-4">
-                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-black pl-3 uppercase">Air Journal</h2>
+                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-ink pl-3 uppercase tracking-tighter">Flights</h2>
                     ${FLIGHTS.map(f => `
-                        <div class="magazine-border p-5 bg-white relative overflow-hidden shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-                            <div class="flex justify-between items-start mb-2">
-                                <span class="font-num text-[10px] font-black text-white bg-casa-black px-2 py-0.5 tracking-widest">${f.type}</span>
-                                <span class="font-num font-black text-casa-accent italic">${f.flight}</span>
+                        <div class="magazine-border p-5 bg-casa-card casa-shadow">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-num text-[10px] font-bold text-white bg-casa-accent px-2 py-0.5 tracking-widest">${f.type}</span>
+                                <span class="font-num font-bold text-casa-ink opacity-40">${f.flight}</span>
                             </div>
                             <div class="ticket-dash my-4"></div>
                             <div class="flex justify-between items-center">
                                 <div>
-                                    <p class="font-num font-black text-2xl tracking-tighter">${f.route}</p>
-                                    <p class="font-num text-xs opacity-40 font-bold">${f.date}</p>
+                                    <p class="font-num font-extrabold text-2xl tracking-tighter text-casa-ink">${f.route}</p>
+                                    <p class="font-num text-[10px] font-bold opacity-30">${f.date}</p>
                                 </div>
                                 <div class="text-right">
-                                    <p class="font-num font-black text-xl">${f.time}</p>
+                                    <p class="font-num font-bold text-xl text-casa-accent">${f.time}</p>
                                 </div>
                             </div>
                         </div>
@@ -177,42 +187,39 @@
                 </div>
 
                 <div class="mb-10">
-                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-black pl-3 uppercase">Base Camp</h2>
-                    <div class="magazine-border p-5 bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)] flex justify-between items-center">
+                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-ink pl-3 uppercase tracking-tighter">Stay</h2>
+                    <div class="magazine-border p-5 bg-casa-card casa-shadow flex justify-between items-center">
                         <div>
-                            <h3 class="font-bold text-lg">${HOTEL.name}</h3>
-                            <p class="text-xs opacity-60 leading-tight mt-1">${HOTEL.address}</p>
+                            <h3 class="font-bold text-lg text-casa-ink">${HOTEL.name}</h3>
+                            <p class="text-[11px] opacity-50 mt-1 font-medium">${HOTEL.address}</p>
                         </div>
-                        <button onclick="window.open('${HOTEL.map}')" class="magazine-border p-3 hover:bg-casa-black hover:text-white transition-all">
-                            <i class="fa-solid fa-location-arrow"></i>
+                        <button onclick="window.open('${HOTEL.map}')" class="soft-border p-3 text-casa-accent hover:bg-casa-accent hover:text-white transition-all">
+                            <i class="fa-solid fa-map-pin"></i>
                         </button>
                     </div>
                 </div>
 
                 <div class="space-y-12">
-                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-black pl-3 uppercase">Daily Log</h2>
+                    <h2 class="font-display italic text-3xl mb-4 border-l-4 border-casa-ink pl-3 uppercase tracking-tighter">Daily</h2>
                     ${ITINERARY.map(day => `
                         <div class="relative">
-                            <div class="absolute -left-2 top-0 font-num font-black text-[120px] leading-none opacity-[0.03] select-none z-0">${day.day}</div>
-                            <div class="relative z-10">
-                                <div class="flex items-center gap-3 mb-6">
-                                    <span class="font-num font-black text-4xl">D${day.day}</span>
-                                    <div class="h-px bg-casa-black flex-1"></div>
-                                    <span class="font-num font-bold text-sm tracking-widest">${day.date}</span>
-                                </div>
-                                <h3 class="font-bold text-xl mb-6 italic decoration-casa-accent underline underline-offset-8">${day.title}</h3>
-                                <div class="space-y-6">
-                                    ${day.events.map(ev => `
-                                        <div class="magazine-border bg-white p-5 shadow-[4px_4px_0px_rgba(0,0,0,1)] ${ev.type === 'important' ? 'border-l-[12px] border-casa-accent' : ''}">
-                                            <div class="flex justify-between items-start mb-2">
-                                                <span class="font-num text-xs font-black px-2 py-0.5 border border-casa-black">${ev.time}</span>
-                                                ${ev.map ? `<button onclick="window.open('${ev.map}')" class="text-sm border-b border-casa-black pb-0.5 hover:text-casa-accent"><i class="fa-solid fa-map-location-dot mr-1"></i>MAP</button>` : ''}
-                                            </div>
-                                            <p class="font-bold text-md mb-1">${ev.title}</p>
-                                            ${ev.desc ? `<p class="text-[11px] text-gray-400 font-medium italic leading-relaxed"># ${ev.desc}</p>` : ''}
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="font-num font-black text-4xl text-casa-accent/20">D${day.day}</span>
+                                <div class="h-[1.2px] bg-casa-ink flex-1"></div>
+                                <span class="font-num font-bold text-[10px] tracking-widest opacity-40">${day.date}</span>
+                            </div>
+                            <h3 class="font-bold text-xl mb-6 italic underline decoration-casa-accent/30 decoration-4 underline-offset-4 text-casa-ink">${day.title}</h3>
+                            <div class="space-y-6">
+                                ${day.events.map(ev => `
+                                    <div class="magazine-border bg-casa-card p-5 casa-shadow ${ev.type === 'important' ? 'border-l-[12px] border-casa-accent' : ''}">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <span class="font-num text-[10px] font-bold px-2 py-0.5 border border-casa-ink">${ev.time}</span>
+                                            ${ev.map ? `<button onclick="window.open('${ev.map}')" class="text-[10px] font-black border-b-2 border-casa-accent text-casa-accent italic">VIEW MAP</button>` : ''}
                                         </div>
-                                    `).join('')}
-                                </div>
+                                        <p class="font-bold text-base text-casa-ink">${ev.title}</p>
+                                        ${ev.desc ? `<p class="text-[11px] text-gray-400 font-medium italic mt-2">// ${ev.desc}</p>` : ''}
+                                    </div>
+                                `).join('')}
                             </div>
                         </div>
                     `).join('')}
@@ -221,52 +228,53 @@
             el.innerHTML = html;
         }
 
+        // --- FOOD RENDER ---
         function renderFood(el) {
             const FOOD_GROUPS = {
                 "WAYFARER 周邊 (南船場)": [
-                    { name: "Panya Bakery", price: "¥500-1000", map: "https://www.google.com/maps/search/?api=1&query=Panya+Bakery+Osaka" },
-                    { name: "一蘭拉麵 心齋橋", price: "¥1000-1500", map: "https://www.google.com/maps/search/?api=1&query=Ichiran+Shinsaibashi" },
-                    { name: "丸龜製麵", price: "¥500-800", map: "https://www.google.com/maps/search/?api=1&query=Marugame+Seimen+Shinsaibashi" },
-                    { name: "Micasadeco & Cafe", price: "¥1500-2500", map: "https://www.google.com/maps/search/?api=1&query=Micasadeco+Cafe+Osaka" },
-                    { name: "松屋 (24HR)", price: "¥500-900", map: "https://www.google.com/maps/search/?api=1&query=Matsuya+Shinsaibashi" },
-                    { name: "Colony by Holiday", price: "¥1500-2000", map: "https://www.google.com/maps/search/?api=1&query=Colony+by+Holiday+Osaka" },
-                    { name: "Le Caneton (法式)", price: "¥5000+", map: "https://www.google.com/maps/search/?api=1&query=Le+Caneton+Osaka" },
-                    { name: "Tsurutontan 烏龍麵", price: "¥1500-2500", map: "https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho" }
+                    { name: "Panya Bakery", price: "¥500-1000", map: "https://www.google.com/maps/search/?api=1&query5" },
+                    { name: "一蘭拉麵 心齋橋", price: "¥1000-1500", map: "https://www.google.com/maps/search/?api=1&query6" },
+                    { name: "丸龜製麵", price: "¥500-800", map: "https://www.google.com/maps/search/?api=1&query7" },
+                    { name: "Micasadeco & Cafe", price: "¥1500-2500", map: "https://www.google.com/maps/search/?api=1&query8" },
+                    { name: "松屋 (24HR)", price: "¥500-900", map: "https://www.google.com/maps/search/?api=1&query9" },
+                    { name: "Colony by Holiday", price: "¥1500-2000", map: "google.com/maps/search/?api=1&query=大阪通天閣0" },
+                    { name: "Le Caneton (法式)", price: "¥5000+", map: "google.com/maps/search/?api=1&query=大阪通天閣1" },
+                    { name: "Tsurutontan 烏龍麵", price: "¥1500-2500", map: "google.com/maps/search/?api=1&query=大阪通天閣2" }
                 ],
                 "TENNOJI Area": [
-                    { name: "利久牛舌", price: "¥2000-3000", map: "https://www.google.com/maps/search/?api=1&query=Rikyu+Abeno+Harukas" },
-                    { name: "東洋亭 (漢堡排)", price: "¥1500-2500", map: "https://www.google.com/maps/search/?api=1&query=Touyoutei+Abeno+Harukas" },
-                    { name: "福太郎 大版燒", price: "¥1000-2000", map: "https://www.google.com/maps/search/?api=1&query=Fukutaro+Tennoji" },
-                    { name: "古好屋 (咖哩)", price: "¥1000-1500", map: "https://www.google.com/maps/search/?api=1&query=Curry+Tennoji" },
-                    { name: "八重勝 串炸", price: "¥1500-3000", map: "https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" },
-                    { name: "天狗 串炸", price: "¥1000-2000", map: "https://www.google.com/maps/search/?api=1&query=Tengu+Shinsekai" },
-                    { name: "千房 大版燒", price: "¥1500-2000", map: "https://www.google.com/maps/search/?api=1&query=Chibo+Tennoji" },
-                    { name: "甘黨前田 (甜點)", price: "¥500-1000", map: "https://www.google.com/maps/search/?api=1&query=Amatou+Maeda+Tennoji" }
+                    { name: "利久牛舌", price: "¥2000-3000", map: "google.com/maps/search/?api=1&query=大阪通天閣3" },
+                    { name: "東洋亭 (漢堡排)", price: "¥1500-2500", map: "google.com/maps/search/?api=1&query=大阪通天閣4" },
+                    { name: "福太郎 大版燒", price: "¥1000-2000", map: "google.com/maps/search/?api=1&query=大阪通天閣5" },
+                    { name: "古好屋 (咖哩)", price: "¥1000-1500", map: "google.com/maps/search/?api=1&query=大阪通天閣6" },
+                    { name: "八重勝 串炸", price: "¥1500-3000", map: "google.com/maps/search/?api=1&query=大阪通天閣7" },
+                    { name: "天狗 串炸", price: "¥1000-2000", map: "google.com/maps/search/?api=1&query=大阪通天閣8" },
+                    { name: "千房 大版燒", price: "¥1500-2000", map: "google.com/maps/search/?api=1&query=大阪通天閣9" },
+                    { name: "甘黨前田 (甜點)", price: "¥500-1000", map: "https://www.google.com/maps/search/?api=1&query=通天閣0" }
                 ],
                 "KYOTO 精選": [
-                    { name: "京都勝牛", price: "¥2000-3000", map: "https://www.google.com/maps/search/?api=1&query=Gyukatsu+Kyoto+Katsuyu" },
-                    { name: "三嶋亭 (壽喜燒)", price: "¥8000+", map: "https://www.google.com/maps/search/?api=1&query=Mishima-tei+Kyoto" },
-                    { name: "十二段家 (茶泡飯)", price: "¥2000-4000", map: "https://www.google.com/maps/search/?api=1&query=Junidanya+Kyoto" },
-                    { name: "茶寮都路里", price: "¥1000-2000", map: "https://www.google.com/maps/search/?api=1&query=Saryo+Itoen+Kyoto" },
-                    { name: "鍵善良房 (葛切)", price: "¥1000-1500", map: "https://www.google.com/maps/search/?api=1&query=Kagizen+Yoshifusa+Kyoto" },
-                    { name: "いづう (鯖魚壽司)", price: "¥3000-5000", map: "https://www.google.com/maps/search/?api=1&query=Izuju+Kyoto" },
-                    { name: "祇園佐佐木", price: "¥10000+", map: "https://www.google.com/maps/search/?api=1&query=Gion+Sasaki+Kyoto" },
-                    { name: "錦市場 豆乳甜甜圈", price: "¥300-600", map: "https://www.google.com/maps/search/?api=1&query=Nishiki+Market+Soy+Milk+Donuts" }
+                    { name: "京都勝牛", price: "¥2000-3000", map: "https://www.google.com/maps/search/?api=1&query=通天閣1" },
+                    { name: "三嶋亭 (壽喜燒)", price: "¥8000+", map: "https://www.google.com/maps/search/?api=1&query=通天閣2" },
+                    { name: "十二段家 (茶泡飯)", price: "¥2000-4000", map: "https://www.google.com/maps/search/?api=1&query=通天閣3" },
+                    { name: "茶寮都路里", price: "¥1000-2000", map: "https://www.google.com/maps/search/?api=1&query=通天閣4" },
+                    { name: "鍵善良房 (葛切)", price: "¥1000-1500", map: "https://www.google.com/maps/search/?api=1&query=通天閣5" },
+                    { name: "いづう (鯖魚壽司)", price: "¥3000-5000", map: "https://www.google.com/maps/search/?api=1&query=通天閣6" },
+                    { name: "祇園佐佐木", price: "¥10000+", map: "https://www.google.com/maps/search/?api=1&query=通天閣7" },
+                    { name: "錦市場 豆乳甜甜圈", price: "¥300-600", map: "https://www.google.com/maps/search/?api=1&query=通天閣8" }
                 ]
             };
 
-            let html = `<h2 class="font-display italic text-4xl mb-8 leading-none uppercase">Gastronomy<br>Manual.</h2>`;
+            let html = `<h2 class="font-display italic text-4xl mb-8 leading-none uppercase text-casa-ink">Taste<br>Catalog.</h2>`;
             for (let zone in FOOD_GROUPS) {
                 html += `
                     <div class="mb-10">
-                        <p class="font-num font-black text-[10px] tracking-widest uppercase mb-2 text-casa-accent">${zone}</p>
-                        <div class="grid grid-cols-2 border-casa-black border bg-casa-black gap-px">
+                        <p class="font-num font-bold text-[10px] tracking-widest uppercase mb-3 text-casa-accent border-b border-casa-accent/20 pb-1">${zone}</p>
+                        <div class="grid grid-cols-2 gap-3">
                             ${FOOD_GROUPS[zone].map(food => `
-                                <div class="bg-white p-4 h-32 flex flex-col justify-between" onclick="window.open('${food.map}')">
-                                    <h4 class="font-bold text-sm leading-tight underline decoration-casa-accent decoration-2 underline-offset-4">${food.name}</h4>
+                                <div class="magazine-border bg-casa-card p-4 h-32 flex flex-col justify-between casa-shadow active:scale-95 transition-transform" onclick="window.open('${food.map}')">
+                                    <h4 class="font-bold text-[13px] leading-tight text-casa-ink underline decoration-casa-accent/20 underline-offset-4">${food.name}</h4>
                                     <div>
-                                        <p class="font-num text-[9px] font-bold opacity-30">PRICE GUIDE</p>
-                                        <p class="font-num text-xs font-bold">${food.price}</p>
+                                        <p class="font-num text-[9px] font-bold opacity-30">BUDGET</p>
+                                        <p class="font-num text-[11px] font-bold text-casa-accent">${food.price}</p>
                                     </div>
                                 </div>
                             `).join('')}
@@ -277,69 +285,63 @@
             el.innerHTML = html;
         }
 
-        // --- WALLET & STORAGE LOGIC ---
+        // --- WALLET RENDER ---
         let currentExpImg = "";
-
         function renderWallet(el) {
             const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
             const totalJPY = expenses.reduce((sum, item) => sum + parseFloat(item.jpy), 0);
-            const totalTWD = Math.round(totalJPY / 5);
-
+            
             el.innerHTML = `
-                <div class="bg-casa-black text-white p-6 shadow-[8px_8px_0px_rgba(214,40,40,1)] mb-10">
-                    <p class="font-num text-[10px] font-bold tracking-[0.3em] opacity-40 mb-4 uppercase">Currency Converter (÷5)</p>
+                <div class="magazine-border bg-casa-ink text-casa-bg p-6 accent-shadow mb-10">
+                    <p class="font-num text-[10px] font-bold tracking-[0.3em] opacity-40 mb-4 uppercase">Converter (÷5)</p>
                     <div class="flex items-center gap-4">
-                        <input id="calc-input" type="text" placeholder="輸入算式..." class="bg-transparent text-4xl font-num font-black w-full outline-none" readonly>
+                        <input id="calc-input" type="text" placeholder="..." class="bg-transparent text-4xl font-num font-black w-full outline-none text-white" readonly>
                         <button onclick="calcResult()" class="font-display italic text-3xl text-casa-accent">=</button>
                     </div>
-                    <div class="mt-4 flex justify-between border-t border-white/10 pt-4">
-                        <p id="calc-res-jpy" class="font-num text-sm opacity-60">JPY 0</p>
-                        <p id="calc-res-twd" class="font-num font-bold text-casa-accent text-lg">TWD 0</p>
+                    <div class="mt-4 flex justify-between border-t border-white/5 pt-4">
+                        <p id="calc-res-jpy" class="font-num text-xs opacity-40">JPY 0</p>
+                        <p id="calc-res-twd" class="font-num font-bold text-casa-accent text-xl">TWD 0</p>
                     </div>
                     <div class="grid grid-cols-4 gap-2 mt-6">
                         ${['7','8','9','/','4','5','6','*','1','2','3','-','0','C','⌫','+'].map(key => `
-                            <button onclick="handleCalc('${key}')" class="p-3 font-num font-bold border border-white/10 hover:bg-white/10 transition">${key}</button>
+                            <button onclick="handleCalc('${key}')" class="p-3 font-num font-bold border border-white/5 hover:bg-white/10 transition text-sm">${key}</button>
                         `).join('')}
                     </div>
                 </div>
 
-                <div class="magazine-border p-6 bg-white mb-10 shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-                    <h3 class="font-num font-black text-xs mb-4 uppercase tracking-widest">Add Expense</h3>
-                    <div class="space-y-4">
-                        <input id="ex-name" type="text" placeholder="品項名稱" class="w-full border-b border-casa-black py-2 text-sm bg-transparent outline-none">
-                        <input id="ex-jpy" type="number" placeholder="日幣金額 (JPY)" class="w-full border-b border-casa-black py-2 text-sm bg-transparent outline-none">
+                <div class="magazine-border p-6 bg-casa-card mb-10 casa-shadow">
+                    <h3 class="font-num font-black text-[10px] mb-6 uppercase tracking-widest text-casa-accent">New Entry</h3>
+                    <div class="space-y-5">
+                        <input id="ex-name" type="text" placeholder="Item Name" class="w-full border-b border-casa-border py-2 text-sm bg-transparent outline-none focus:border-casa-accent transition-colors">
+                        <input id="ex-jpy" type="number" placeholder="Amount (JPY)" class="w-full border-b border-casa-border py-2 text-sm bg-transparent outline-none focus:border-casa-accent transition-colors">
                         <div class="flex gap-4 items-center">
-                            <label class="flex-1 magazine-border border-dashed p-4 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50">
-                                <i class="fa-solid fa-camera text-xl mb-1"></i>
-                                <span class="text-[8px] font-bold">RECEIPT</span>
+                            <label class="flex-1 magazine-border border-dashed p-4 flex flex-col items-center justify-center cursor-pointer bg-casa-bg/50 hover:bg-casa-bg transition-colors">
+                                <i class="fa-solid fa-camera text-xl mb-1 opacity-40"></i>
+                                <span class="text-[8px] font-bold opacity-40 uppercase">Receipt</span>
                                 <input type="file" class="hidden" accept="image/*" onchange="processImage(this)">
                             </label>
-                            <button onclick="saveExpense()" class="flex-[2] bg-casa-black text-white h-[68px] font-num font-black text-xs tracking-[0.2em] uppercase">Store Data</button>
+                            <button onclick="saveExpense()" class="flex-[2] bg-casa-ink text-white h-[68px] font-num font-bold text-[10px] tracking-[0.2em] uppercase active:scale-95 transition-transform">Save Data</button>
                         </div>
-                        <div id="img-preview" class="hidden">
-                            <div class="img-preview-container magazine-border p-1 bg-white inline-block">
-                                <img id="preview-src" src="" class="h-24 w-auto object-cover">
-                            </div>
-                        </div>
+                        <div id="img-preview" class="hidden"><img id="preview-src" src="" class="h-20 magazine-border casa-shadow"></div>
                     </div>
                 </div>
 
                 <div class="space-y-6 pb-10">
-                    <div class="flex justify-between items-end border-b-2 border-casa-black pb-2">
-                        <h3 class="font-display italic text-2xl uppercase">History</h3>
-                        <p class="font-num font-bold text-xs uppercase opacity-40">Total: ¥${totalJPY} / $${totalTWD}</p>
+                    <div class="flex justify-between items-end border-b border-casa-border pb-2">
+                        <h3 class="font-display italic text-2xl text-casa-ink">Log</h3>
+                        <p class="font-num font-bold text-[10px] opacity-30">Total ¥${totalJPY}</p>
                     </div>
-                    <div id="expense-list" class="space-y-4">
+                    <div class="space-y-4">
                         ${expenses.map((ex, i) => `
-                            <div class="flex items-center gap-4 magazine-border p-3 bg-white">
-                                <div class="w-14 h-14 bg-gray-100 flex-shrink-0 magazine-border p-0.5 overflow-hidden">
-                                    ${ex.img ? `<img src="${ex.img}" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">` : `<i class="fa-solid fa-receipt m-4 opacity-10"></i>`}
+                            <div class="flex items-center gap-4 magazine-border p-3 bg-casa-card casa-shadow">
+                                <div class="w-12 h-12 bg-casa-bg flex-shrink-0 soft-border overflow-hidden">
+                                    ${ex.img ? `<img src="${ex.img}" class="w-full h-full object-cover">` : `<i class="fa-solid fa-receipt m-3.5 opacity-10"></i>`}
                                 </div>
                                 <div class="flex-1">
-                                    <p class="font-bold text-sm leading-tight">${ex.name}</p>
-                                    <p class="font-num text-[10px] opacity-40">¥${ex.jpy} ❯ TWD ${Math.round(ex.jpy/5)}</p>
+                                    <p class="font-bold text-[13px] text-casa-ink leading-none">${ex.name}</p>
+                                    <p class="font-num text-[10px] opacity-40 mt-1">¥${ex.jpy} / NT$${Math.round(ex.jpy/5)}</p>
                                 </div>
-                                <button onclick="deleteExpense(${i})" class="text-xs text-casa-accent p-2"><i class="fa-solid fa-trash"></i></button>
+                                <button onclick="deleteExpense(${i})" class="text-xs text-casa-accent p-2 opacity-30 hover:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
                         `).reverse().join('')}
                     </div>
@@ -347,16 +349,15 @@
             `;
         }
 
-        // --- CALC LOGIC ---
+        // --- CALCULATOR & IMAGE HELPER ---
         let q = "";
         function handleCalc(k) {
             const input = document.getElementById('calc-input');
-            if(k === 'C') { q = ""; }
-            else if(k === '⌫') { q = q.slice(0, -1); }
-            else { q += k; }
+            if(k === 'C') q = "";
+            else if(k === '⌫') q = q.slice(0, -1);
+            else q += k;
             input.value = q;
         }
-
         function calcResult() {
             const input = document.getElementById('calc-input');
             const resJpy = document.getElementById('calc-res-jpy');
@@ -365,15 +366,9 @@
                 const res = eval(q);
                 resJpy.innerText = "JPY " + res;
                 resTwd.innerText = "TWD " + Math.round(res / 5);
-                q = res.toString();
-                input.value = q;
-            } catch {
-                input.value = "ERROR";
-                q = "";
-            }
+                q = res.toString(); input.value = q;
+            } catch { input.value = "ERR"; q = ""; }
         }
-
-        // --- IMAGE PROCESSOR (CANVAS COMPRESSION) ---
         function processImage(input) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
@@ -384,11 +379,8 @@
                         const ctx = canvas.getContext('2d');
                         const maxWidth = 300;
                         const scale = maxWidth / img.width;
-                        canvas.width = maxWidth;
-                        canvas.height = img.height * scale;
+                        canvas.width = maxWidth; canvas.height = img.height * scale;
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                        
-                        // Compress to 0.6 quality JPEG
                         currentExpImg = canvas.toDataURL('image/jpeg', 0.6);
                         document.getElementById('img-preview').classList.remove('hidden');
                         document.getElementById('preview-src').src = currentExpImg;
@@ -398,52 +390,38 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
         function saveExpense() {
             const name = document.getElementById('ex-name').value;
             const jpy = document.getElementById('ex-jpy').value;
             if(!name || !jpy) return;
-
             const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
             expenses.push({ name, jpy, img: currentExpImg });
             localStorage.setItem('expenses', JSON.stringify(expenses));
-            
-            // Reset
-            currentExpImg = "";
-            render('wallet');
+            currentExpImg = ""; renderWallet(document.getElementById('app'));
         }
-
         function deleteExpense(i) {
             const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
             expenses.splice(expenses.length - 1 - i, 1);
             localStorage.setItem('expenses', JSON.stringify(expenses));
-            render('wallet');
+            renderWallet(document.getElementById('app'));
         }
 
-        // --- BUYING GUIDE ---
+        // --- BUY RENDER ---
         function renderBuy(el) {
             const DATA = {
-                "Souvenirs (伴手禮)": [
-                    "白色戀人", "薯條三兄弟", "Pocky 限量口味", "Tokyo Banana", "福砂屋 カステラ", "Royce 生巧克力", "KitKat 抹茶/日本酒", "呼吸巧克力 (大阪)", "茅乃舍 高湯包", "茶之菓 (京都)", "小倉山莊 仙貝", "Press Butter Sand", "Sugar Butter Tree", "LeTAO 起司蛋糕", "一蘭 泡麵包"
-                ],
-                "Med / Cosmetic (藥妝)": [
-                    "合利他命 EX Plus", "EVE 止痛藥", "大正感冒藥", "Rohto 勁涼眼藥水", "龍角散 粉末", "休足時間", "安耐曬 金鑽", "雪肌精 洗面乳", "DHC 護唇膏", "參天 PC 眼藥水", "獅王 祛痘膏", "Kanebo 酵素洗顏", "肌研 極潤", "SK-II (機場免稅)", "Ora2 牙膏"
-                ],
-                "Gadgets (家電)": [
-                    "Panasonic 吹風機", "Dyson (匯率優勢)", "象印/虎牌 電鍋", "TOTO 免治便座", "Sharp 加濕空氣清淨機", "Bic Camera 限定美容儀", "Sony WH-1000XM5", "Nintendo Switch Pro 手把", "Tiger 悶燒杯", "Nespresso 膠囊機", "精工/星辰 手錶", "富士 Instax Mini", "百慕達 烤箱", "歐姆龍 低週波治療器", "Kalita 手沖壺"
-                ]
+                "Souvenirs (伴手禮)": ["白色戀人", "薯條三兄弟", "Pocky 限量口味", "Tokyo Banana", "福砂屋 カステラ", "Royce 生巧克力", "KitKat 抹茶", "呼吸巧克力", "茅乃舍 高湯包", "茶之菓 (京都)", "小倉山莊 仙貝", "Press Butter Sand", "Sugar Butter Tree", "LeTAO 起司蛋糕", "一蘭 泡麵包"],
+                "Cosmetics (藥妝)": ["合利他命 EX Plus", "EVE 止痛藥", "大正感冒藥", "Rohto 勁涼眼藥水", "龍角散 粉末", "休足時間", "安耐曬 金鑽", "雪肌精 洗面乳", "DHC 護唇膏", "參天 PC 眼藥水", "獅王 祛痘膏", "Kanebo 酵素洗顏", "肌研 極潤", "SK-II (免稅)", "Ora2 牙膏"]
             };
-
-            let html = `<h2 class="font-display italic text-4xl mb-8 leading-none uppercase">Buying<br>Archive.</h2>`;
-            for (let category in DATA) {
+            let html = `<h2 class="font-display italic text-4xl mb-8 leading-none uppercase text-casa-ink">Buying<br>List.</h2>`;
+            for (let cat in DATA) {
                 html += `
                     <div class="mb-10">
-                        <h3 class="font-num font-black text-xs mb-4 p-2 bg-casa-black text-white inline-block tracking-[0.2em] uppercase">${category}</h3>
-                        <div class="magazine-border bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)] divide-y divide-casa-black">
-                            ${DATA[category].map(item => `
-                                <div class="p-4 flex justify-between items-center group active:bg-gray-50" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(item + ' 日本 價格 2026')}')">
-                                    <span class="text-sm font-bold tracking-tight">${item}</span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-20"></i>
+                        <h3 class="font-num font-bold text-[10px] mb-4 p-2 bg-casa-accent text-white inline-block tracking-[0.2em] uppercase">${cat}</h3>
+                        <div class="magazine-border bg-casa-card casa-shadow divide-y divide-casa-border">
+                            ${DATA[cat].map(item => `
+                                <div class="p-4 flex justify-between items-center active:bg-casa-bg" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(item + ' 日本 2026')}')">
+                                    <span class="text-sm font-medium text-casa-ink tracking-tight">${item}</span>
+                                    <i class="fa-solid fa-magnifying-glass text-[9px] opacity-20"></i>
                                 </div>
                             `).join('')}
                         </div>
@@ -453,122 +431,76 @@
             el.innerHTML = html;
         }
 
-        // --- CHECKLIST & MEMO ---
+        // --- LISTS RENDER ---
         function renderLists(el) {
-            const checklist = [
-                "護照 (效期6個月)", "機票電子檔", "飯店訂房資料", "Visit Japan Web QR", "身分證備用", "旅遊保險資料", "日幣現金", "信用卡 (2張)", "日本網卡 / eSIM", "行動電源", "插頭/充電線", "發熱衣", "好走防滑的鞋", "折疊雨傘"
-            ];
+            const checklist = ["護照", "機票", "飯店憑證", "Visit Japan QR", "日幣現金", "信用卡 (2張)", "網卡/eSIM", "行動電源", "發熱衣", "好走防滑鞋", "摺疊雨傘"];
             const checks = JSON.parse(localStorage.getItem('checks') || '{}');
             const memo = localStorage.getItem('memo') || "";
-
             el.innerHTML = `
                 <div class="mb-12">
-                    <h2 class="font-display italic text-4xl mb-8 uppercase">Checklist.</h2>
-                    <div class="magazine-border p-6 bg-white shadow-[6px_6px_0px_rgba(0,0,0,1)] space-y-4">
+                    <h2 class="font-display italic text-4xl mb-8 uppercase text-casa-ink">Essentials.</h2>
+                    <div class="magazine-border p-6 bg-casa-card casa-shadow space-y-4">
                         ${checklist.map((item, i) => `
-                            <label class="flex items-center gap-4 cursor-pointer group">
-                                <div class="relative">
-                                    <input type="checkbox" class="peer hidden" onchange="toggleCheck(${i})" ${checks[i] ? 'checked' : ''}>
-                                    <div class="w-6 h-6 magazine-border flex items-center justify-center peer-checked:bg-casa-accent transition-colors">
-                                        <i class="fa-solid fa-check text-white text-xs opacity-0 peer-checked:opacity-100"></i>
-                                    </div>
+                            <label class="flex items-center gap-4 cursor-pointer">
+                                <input type="checkbox" class="peer hidden" onchange="toggleCheck(${i})" ${checks[i] ? 'checked' : ''}>
+                                <div class="w-6 h-6 magazine-border flex items-center justify-center peer-checked:bg-casa-accent peer-checked:border-casa-accent transition-all">
+                                    <i class="fa-solid fa-check text-white text-[10px] opacity-0 peer-checked:opacity-100"></i>
                                 </div>
-                                <span class="text-sm font-bold ${checks[i] ? 'line-through opacity-30' : ''}">${item}</span>
+                                <span class="text-sm font-medium text-casa-ink ${checks[i] ? 'line-through opacity-30' : ''}">${item}</span>
                             </label>
                         `).join('')}
                     </div>
                 </div>
-
                 <div class="mb-10">
-                    <h2 class="font-display italic text-4xl mb-8 uppercase">Memo.</h2>
-                    <div class="magazine-border p-1 bg-casa-black shadow-[6px_6px_0px_rgba(0,0,0,1)]">
-                        <textarea id="memo-field" oninput="saveMemo()" class="w-full h-64 p-5 text-sm bg-casa-bg outline-none font-medium leading-relaxed" placeholder="在這裡輸入任何備忘...">${memo}</textarea>
-                    </div>
-                    <div id="memo-links" class="mt-4 flex flex-wrap gap-2"></div>
+                    <h2 class="font-display italic text-4xl mb-8 uppercase text-casa-ink">Memos.</h2>
+                    <textarea id="memo-field" oninput="saveMemo()" class="w-full h-48 magazine-border p-5 text-sm bg-casa-card casa-shadow outline-none focus:border-casa-accent" placeholder="Write something...">${memo}</textarea>
                 </div>
             `;
-            updateMemoLinks(memo);
         }
-
         function toggleCheck(i) {
             const checks = JSON.parse(localStorage.getItem('checks') || '{}');
             checks[i] = !checks[i];
             localStorage.setItem('checks', JSON.stringify(checks));
             renderLists(document.getElementById('app'));
         }
-
         function saveMemo() {
-            const val = document.getElementById('memo-field').value;
-            localStorage.setItem('memo', val);
-            updateMemoLinks(val);
+            localStorage.setItem('memo', document.getElementById('memo-field').value);
         }
 
-        function updateMemoLinks(text) {
-            const container = document.getElementById('memo-links');
-            if(!container) return;
-            const urlRegex = /(https?:\/\/[^\s]+)/g;
-            const links = text.match(urlRegex) || [];
-            container.innerHTML = links.map(url => `
-                <button onclick="window.open('${url}')" class="magazine-border px-3 py-1 bg-white text-[10px] font-black hover:bg-casa-black hover:text-white transition-all">
-                    OPEN LINK <i class="fa-solid fa-link ml-1"></i>
-                </button>
-            `).join('');
-        }
-
-        // --- INFO PAGE ---
+        // --- INFO RENDER ---
         function renderInfo(el) {
             el.innerHTML = `
-                <h2 class="font-display italic text-4xl mb-8 leading-tight uppercase">Emergency<br>& Data.</h2>
-                
+                <h2 class="font-display italic text-4xl mb-8 leading-tight uppercase text-casa-ink">Safety<br>& Info.</h2>
                 <div class="space-y-8 pb-10">
-                    <div class="magazine-border p-6 bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-                        <h3 class="font-bold text-lg mb-4 border-b-2 border-casa-black pb-2 flex justify-between items-center">
-                            WEATHER <i class="fa-solid fa-cloud-sun"></i>
-                        </h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <button onclick="window.open('https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=270000')" class="magazine-border p-4 text-center font-bold text-xs">大阪預報 ❯</button>
-                            <button onclick="window.open('https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=260000')" class="magazine-border p-4 text-center font-bold text-xs">京都預報 ❯</button>
+                    <div class="magazine-border p-6 bg-casa-card casa-shadow">
+                        <h3 class="font-bold text-lg mb-4 border-b border-casa-border pb-2 flex justify-between items-center">WEATHER <i class="fa-solid fa-sun text-casa-accent"></i></h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="window.open('https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=270000')" class="magazine-border p-4 text-[11px] font-bold active:bg-casa-bg">OSAKA ❯</button>
+                            <button onclick="window.open('https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=260000')" class="magazine-border p-4 text-[11px] font-bold active:bg-casa-bg">KYOTO ❯</button>
                         </div>
                     </div>
-
-                    <div class="magazine-border p-6 bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)] border-l-[12px] border-casa-accent">
-                        <h3 class="font-bold text-lg mb-4 flex justify-between items-center">
-                            EMERGENCY <i class="fa-solid fa-phone-volume"></i>
-                        </h3>
-                        <div class="space-y-4">
-                            <div class="flex justify-between border-b border-gray-100 pb-2">
-                                <span class="text-sm font-bold opacity-60">警察局 (Police)</span>
-                                <span class="font-num font-black text-casa-accent">110</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-100 pb-2">
-                                <span class="text-sm font-bold opacity-60">救護車 (Ambulance)</span>
-                                <span class="font-num font-black text-casa-accent">119</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-sm font-bold opacity-60 text-left">駐大阪辦事處</span>
-                                <span class="font-num font-black text-xs text-right">+81-6-6443-8481</span>
-                            </div>
+                    <div class="magazine-border p-6 bg-casa-accent text-white accent-shadow">
+                        <h3 class="font-bold text-lg mb-4">EMERGENCY</h3>
+                        <div class="space-y-3 font-num font-bold text-sm">
+                            <div class="flex justify-between border-b border-white/20 pb-2"><span>Police</span><span>110</span></div>
+                            <div class="flex justify-between border-b border-white/20 pb-2"><span>Ambulance</span><span>119</span></div>
+                            <div class="flex justify-between pt-1"><span class="text-[11px]">駐大阪辦事處</span><span class="text-[11px]">+81-6-6443-8481</span></div>
                         </div>
                     </div>
-
-                    <div class="magazine-border p-6 bg-casa-black text-white shadow-[4px_4px_0px_rgba(214,40,40,1)]">
-                        <h3 class="font-bold text-lg mb-4">NOTICE (重要提醒)</h3>
-                        <ul class="text-xs space-y-3 font-medium opacity-80 list-disc pl-4">
-                            <li>手扶梯：大阪站右側，東京站左側。</li>
-                            <li>大眾運輸全面禁煙，禁止大聲交談。</li>
-                            <li>垃圾需分類，街頭垃圾桶較少建議隨身帶袋。</li>
-                            <li>Visit Japan Web 入境審查 QR 建議截圖。</li>
-                            <li>免稅購物需出示護照原件。</li>
+                    <div class="magazine-border p-6 bg-casa-ink text-casa-bg casa-shadow">
+                        <h3 class="font-bold text-lg mb-4 opacity-50 italic">NOTICES</h3>
+                        <ul class="text-[11px] space-y-3 font-medium list-disc pl-4 opacity-80">
+                            <li>手扶梯：大阪靠右站立，東京靠左。</li>
+                            <li>Visit Japan Web QR Code 建議先行截圖。</li>
+                            <li>2 月大阪氣溫約 3°C - 10°C，注意保暖防風。</li>
+                            <li>大部分小店仍偏好現金支付。</li>
                         </ul>
                     </div>
                 </div>
             `;
         }
 
-        // --- APP START ---
-        window.onload = () => {
-            router('plan');
-        };
+        window.onload = () => router('plan');
     </script>
 </body>
 </html>
