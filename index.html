@@ -15,14 +15,19 @@
                     colors: {
                         'jp-bg': '#F9F6F2',      // 柔和米白紙張色
                         'jp-ink': '#2D2D2D',     // 深炭灰
-                        'jp-accent': '#7E909A',  // 灰藍調 (柔和重點)
-                        'jp-sand': '#E8E2D9',    // 淺沙色 (分割線)
-                        'jp-paper': '#FFFFFF'    // 純白 (卡片)
+                        'jp-accent': '#7E909A',  // 灰藍調
+                        'jp-sand': '#E8E2D9',    // 淺沙色
+                        'jp-paper': '#FFFFFF'    // 純白
                     },
                     fontFamily: {
                         'sans': ['Noto Sans JP', 'sans-serif'],
                         'serif': ['Noto Serif JP', 'serif'],
                         'num': ['Montserrat', 'sans-serif']
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem'
                     }
                 }
             }
@@ -32,95 +37,75 @@
     <style>
         body { background-color: #F9F6F2; color: #2D2D2D; font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
         .serif-title { font-family: 'Noto Serif JP', serif; }
-        .jp-border { border: 0.5px solid #2D2D2D; }
-        .soft-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .jp-border { border: 0.8px solid #E8E2D9; border-radius: 1.25rem; } /* 統一圓角邊框 */
+        .soft-shadow { box-shadow: 0 10px 30px rgba(45, 45, 45, 0.05); }
         .active-tab { color: #7E909A !important; position: relative; }
-        .active-tab::after { content: ''; position: absolute; bottom: -8px; width: 4px; height: 4px; background: #7E909A; border-radius: 50%; left: 50%; transform: translateX(-50%); }
+        .active-tab::after { content: ''; position: absolute; bottom: -10px; width: 4px; height: 4px; background: #7E909A; border-radius: 50%; left: 50%; transform: translateX(-50%); }
         
         /* 雜誌感裝飾 */
-        .vertical-text { writing-mode: vertical-rl; }
-        .date-badge { background: #2D2D2D; color: #F9F6F2; padding: 2px 8px; font-size: 10px; font-family: 'Montserrat'; font-weight: 700; }
+        .date-badge { background: #2D2D2D; color: #F9F6F2; padding: 4px 12px; font-size: 10px; font-family: 'Montserrat'; font-weight: 700; border-radius: 50px; }
         
-        /* 平滑過渡 */
         .page-fade { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
         input, textarea { background: transparent !important; }
+        .btn-round { border-radius: 1rem; transition: all 0.2s; }
     </style>
 </head>
 <body class="pb-24">
 
-    <header class="px-6 pt-12 pb-6 sticky top-0 bg-jp-bg/80 backdrop-blur-md z-40 border-b border-jp-sand">
-        <div class="flex justify-between items-baseline">
+    <header class="px-6 pt-12 pb-6 sticky top-0 bg-jp-bg/90 backdrop-blur-md z-40">
+        <div class="flex justify-between items-center">
             <div>
                 <h1 class="serif-title text-3xl font-black tracking-tight">大阪旅行記.</h1>
-                <p class="font-num text-[10px] tracking-[0.2em] opacity-40 uppercase mt-1">Winter, 2026 Archive</p>
+                <p class="font-num text-[10px] tracking-[0.2em] opacity-40 uppercase mt-1 italic">Winter 2026</p>
             </div>
-            <div class="text-right">
-                <span class="date-badge uppercase">02.13 - 02.17</span>
-            </div>
+            <span class="date-badge">02.13 — 02.17</span>
         </div>
     </header>
 
     <main id="app" class="p-6 page-fade">
         </main>
 
-    <nav class="fixed bottom-0 left-0 w-full bg-jp-bg/95 border-t border-jp-sand px-4 py-5 z-50 flex justify-around items-center">
-        <button onclick="router('plan')" id="nav-plan" class="flex flex-col items-center gap-1 opacity-30 transition-all">
-            <i class="fa-solid fa-calendar-day text-lg"></i><span class="text-[8px] font-bold">行程</span>
-        </button>
-        <button onclick="router('food')" id="nav-food" class="flex flex-col items-center gap-1 opacity-30 transition-all">
-            <i class="fa-solid fa-plate-wheat text-lg"></i><span class="text-[8px] font-bold">美食</span>
-        </button>
-        <button onclick="router('wallet')" id="nav-wallet" class="flex flex-col items-center gap-1 opacity-30 transition-all">
-            <i class="fa-solid fa-wallet text-lg"></i><span class="text-[8px] font-bold">記帳</span>
-        </button>
-        <button onclick="router('buy')" id="nav-buy" class="flex flex-col items-center gap-1 opacity-30 transition-all">
-            <i class="fa-solid fa-bag-shopping text-lg"></i><span class="text-[8px] font-bold">清單</span>
-        </button>
-        <button onclick="router('lists')" id="nav-lists" class="flex flex-col items-center gap-1 opacity-30 transition-all">
-            <i class="fa-solid fa-check-double text-lg"></i><span class="text-[8px] font-bold">準備</span>
-        </button>
-        <button onclick="router('info')" id="nav-info" class="flex flex-col items-center gap-1 opacity-30 transition-all">
-            <i class="fa-solid fa-info-circle text-lg"></i><span class="text-[8px] font-bold">資訊</span>
-        </button>
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] bg-jp-ink/95 text-white/40 px-4 py-4 z-50 flex justify-around items-center rounded-3xl shadow-2xl backdrop-blur-lg">
+        <button onclick="router('plan')" id="nav-plan" class="flex flex-col items-center gap-1 transition-all"><i class="fa-solid fa-calendar-day text-lg"></i></button>
+        <button onclick="router('food')" id="nav-food" class="flex flex-col items-center gap-1 transition-all"><i class="fa-solid fa-utensils text-lg"></i></button>
+        <button onclick="router('wallet')" id="nav-wallet" class="flex flex-col items-center gap-1 transition-all"><i class="fa-solid fa-wallet text-lg"></i></button>
+        <button onclick="router('buy')" id="nav-buy" class="flex flex-col items-center gap-1 transition-all"><i class="fa-solid fa-bag-shopping text-lg"></i></button>
+        <button onclick="router('lists')" id="nav-lists" class="flex flex-col items-center gap-1 transition-all"><i class="fa-solid fa-check-double text-lg"></i></button>
+        <button onclick="router('info')" id="nav-info" class="flex flex-col items-center gap-1 transition-all"><i class="fa-solid fa-info-circle text-lg"></i></button>
     </nav>
 
     <script>
-        // --- DATA (同前，更新連結) ---
+        // --- DATA ---
         const ITINERARY = [
             { day: "01", date: "2/13 FRI", title: "暮色抵達", events: [
-                { time: "19:20", title: "關西機場 (KIX) 著", type: "trans", map: "https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" },
-                { time: "21:30", title: "南船場休息", desc: "Wayfarer Matsu Check-in", map: "https://www.google.com/maps/search/?api=1&query=Wayfarer+Matsu+Osaka" }
+                { time: "19:20", title: "關西機場 (KIX) 著", type: "trans", map: "http://google.com/maps/search/KIX+Airport" },
+                { time: "21:30", title: "南船場住宿", desc: "Wayfarer Matsu Check-in", map: "http://google.com/maps/search/Wayfarer+Matsu" }
             ]},
             { day: "02", date: "2/14 SAT", title: "下町散步", events: [
-                { time: "10:00", title: "四天王寺參拜", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Shitennoji" },
-                { time: "11:15", title: "天王寺午茶", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Abeno+Harukas" },
-                { time: "15:15", title: "新世界散策", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Shinsekai+Osaka" },
-                { time: "18:00", title: "難波夜食", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Namba+Dotonbori" }
+                { time: "10:00", title: "四天王寺參拜", type: "sight", map: "http://google.com/maps/search/Shitennoji" },
+                { time: "15:15", title: "新世界散策", type: "sight", map: "http://google.com/maps/search/Shinsekai" },
+                { time: "18:00", title: "難波夜食", type: "food", map: "http://google.com/maps/search/Namba" }
             ]},
             { day: "03", date: "2/15 SUN", title: "古都巡禮", events: [
-                { time: "09:55", title: "百萬遍手作市集", type: "sight", desc: "知恩寺境內", map: "https://www.google.com/maps/search/?api=1&query=Chion-ji+Temple+Kyoto" },
-                { time: "13:30", title: "清水寺區域", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera" },
-                { time: "16:00", title: "京都牛奉行", type: "food", map: "https://www.google.com/maps/search/?api=1&query=Kyoto+Gion+Restaurant" }
+                { time: "09:55", title: "百萬遍手作市集", type: "sight", desc: "知恩寺境內", map: "http://google.com/maps/search/Chion-ji" },
+                { time: "13:30", title: "清水寺區域", type: "sight", map: "http://google.com/maps/search/Kiyomizu-dera" }
             ]},
             { day: "04", date: "2/16 MON", title: "湯浴時刻", events: [
-                { time: "13:30", title: "空庭溫泉", type: "important", desc: "泡湯、浴衣休息", map: "https://www.google.com/maps/search/?api=1&query=Solaniwa+Onsen" },
-                { time: "17:15", title: "館內晚餐", type: "food" }
+                { time: "13:30", title: "空庭溫泉", type: "important", desc: "泡湯、浴衣休息", map: "http://google.com/maps/search/Solaniwa+Onsen" }
             ]},
-            { day: "05", date: "2/17 TUE", title: "歸途路上的購物", events: [
-                { time: "11:00", title: "心齋橋最終採買", type: "sight", map: "https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Suji" },
+            { day: "05", date: "2/17 TUE", title: "歸途購物", events: [
+                { time: "11:00", title: "心齋橋最終採買", type: "sight", map: "http://google.com/maps/search/Shinsaibashi" },
                 { time: "20:45", title: "關西機場起飛", type: "important" }
             ]}
         ];
 
         // --- CORE FUNCTIONS ---
         function router(target) {
-            document.querySelectorAll('nav button').forEach(btn => btn.classList.replace('opacity-100', 'opacity-30'));
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active-tab', 'text-white'));
             const active = document.getElementById(`nav-${target}`);
-            active.classList.replace('opacity-30', 'opacity-100');
-            active.classList.add('active-tab');
-            
+            active.classList.add('active-tab', 'text-white');
             window.scrollTo(0, 0);
             render(target);
         }
@@ -138,42 +123,40 @@
         // --- RENDER PLAN ---
         function renderPlan(el) {
             let html = `
-                <div class="mb-12">
-                    <p class="font-num text-[10px] font-bold opacity-30 mb-2 tracking-[0.3em]">FLIGHT INFO</p>
-                    <div class="bg-jp-paper p-5 soft-shadow flex justify-between items-center jp-border">
-                        <div class="text-xs">
-                            <p class="font-bold opacity-40">2/13 TPE-KIX</p>
-                            <p class="font-num text-lg font-bold">D7378 <span class="text-[10px] opacity-40">15:40-19:20</span></p>
+                <div class="mb-10">
+                    <div class="bg-jp-paper p-6 soft-shadow rounded-2xl flex justify-between items-center border border-jp-sand">
+                        <div>
+                            <p class="font-num text-[10px] font-bold opacity-30 tracking-[0.2em] mb-1">DEPARTURE</p>
+                            <p class="font-num text-lg font-bold">D7378 <span class="text-xs opacity-40 ml-2">15:40</span></p>
                         </div>
-                        <div class="h-8 w-px bg-jp-sand"></div>
-                        <div class="text-right text-xs">
-                            <p class="font-bold opacity-40">2/17 KIX-TPE</p>
-                            <p class="font-num text-lg font-bold">D7379 <span class="text-[10px] opacity-40">20:45-23:05</span></p>
+                        <i class="fa-solid fa-plane text-jp-sand text-xl"></i>
+                        <div class="text-right">
+                            <p class="font-num text-[10px] font-bold opacity-30 tracking-[0.2em] mb-1">RETURN</p>
+                            <p class="font-num text-lg font-bold">D7379 <span class="text-xs opacity-40 ml-2">20:45</span></p>
                         </div>
                     </div>
                 </div>
 
-                <div class="space-y-16">
+                <div class="space-y-12">
                     ${ITINERARY.map(day => `
                         <div class="relative">
-                            <div class="flex items-baseline gap-4 mb-8">
-                                <h2 class="serif-title text-5xl opacity-10 font-black font-num">${day.day}</h2>
-                                <div class="flex flex-col">
-                                    <span class="font-num font-bold text-xs tracking-widest text-jp-accent">${day.date}</span>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-10 h-10 bg-jp-ink text-white rounded-full flex items-center justify-center font-num font-bold text-sm">${day.day}</div>
+                                <div>
+                                    <span class="font-num font-bold text-[10px] tracking-widest text-jp-accent block leading-none">${day.date}</span>
                                     <span class="serif-title text-xl font-bold">${day.title}</span>
                                 </div>
                             </div>
                             
-                            <div class="space-y-8 pl-4 border-l border-jp-sand">
+                            <div class="space-y-4">
                                 ${day.events.map(ev => `
-                                    <div class="relative group">
-                                        <div class="absolute -left-[21px] top-1 w-2 h-2 bg-jp-accent rounded-full border-2 border-jp-bg"></div>
-                                        <div class="flex justify-between items-start">
-                                            <span class="font-num text-[10px] font-bold opacity-30">${ev.time}</span>
-                                            ${ev.map ? `<a href="${ev.map}" target="_blank" class="text-[9px] font-bold border-b border-jp-accent text-jp-accent">MAP</a>` : ''}
+                                    <div class="bg-jp-paper p-5 rounded-2xl soft-shadow border border-jp-sand relative">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <span class="font-num text-[10px] font-bold text-jp-accent bg-jp-bg px-2 py-1 rounded-lg">${ev.time}</span>
+                                            ${ev.map ? `<button onclick="window.open('${ev.map}')" class="text-[9px] font-bold text-jp-accent"><i class="fa-solid fa-location-dot mr-1"></i>MAP</button>` : ''}
                                         </div>
-                                        <p class="font-bold text-[15px] mt-1">${ev.title}</p>
-                                        ${ev.desc ? `<p class="text-[11px] opacity-40 mt-1 leading-relaxed">${ev.desc}</p>` : ''}
+                                        <p class="font-bold text-[15px] text-jp-ink">${ev.title}</p>
+                                        ${ev.desc ? `<p class="text-[11px] opacity-40 mt-1 leading-relaxed italic">${ev.desc}</p>` : ''}
                                     </div>
                                 `).join('')}
                             </div>
@@ -186,93 +169,85 @@
 
         // --- RENDER FOOD ---
         function renderFood(el) {
-            const zones = {
-                "南船場 周邊": ["Panya Bakery", "一蘭 心齋橋", "丸龜製麵", "Micasadeco Cafe", "松屋", "Colony Holiday", "Le Caneton", "Tsurutontan"],
-                "天王寺 區域": ["利久牛舌", "東洋亭", "福太郎", "古好屋", "八重勝", "天狗串炸", "千房", "甘黨前田"]
-            };
-            let html = `<h2 class="serif-title text-3xl mb-10 underline decoration-jp-accent/20 underline-offset-8">味覺清單.</h2>`;
-            for(let zone in zones) {
+            const list = ["Panya Bakery", "一蘭 心齋橋", "丸龜製麵", "Micasadeco Cafe", "利久牛舌", "東洋亭", "福太郎", "千房"];
+            let html = `<h2 class="serif-title text-3xl mb-8">味覺記錄.</h2>`;
+            html += `<div class="grid grid-cols-2 gap-4">`;
+            list.forEach(f => {
                 html += `
-                    <div class="mb-12">
-                        <p class="font-bold text-xs mb-4 text-jp-accent flex items-center gap-2"><span class="w-1 h-1 bg-jp-accent"></span> ${zone}</p>
-                        <div class="grid grid-cols-2 gap-4">
-                            ${zones[zone].map(f => `
-                                <div onclick="window.open('https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(f + ' 大阪')}')" class="bg-jp-paper p-4 soft-shadow jp-border active:scale-95 transition-transform">
-                                    <p class="font-bold text-[13px] leading-tight mb-2">${f}</p>
-                                    <p class="text-[9px] opacity-30 font-num">VIEW ON MAP ❯</p>
-                                </div>
-                            `).join('')}
+                    <div onclick="window.open('http://google.com/maps/search/${f}')" class="bg-jp-paper p-5 rounded-2xl soft-shadow border border-jp-sand active:scale-95 transition-transform">
+                        <div class="w-8 h-8 bg-jp-bg rounded-full flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-utensils text-[10px] text-jp-accent"></i>
                         </div>
+                        <p class="font-bold text-[13px] leading-tight">${f}</p>
                     </div>
                 `;
-            }
+            });
+            html += `</div>`;
             el.innerHTML = html;
         }
 
-        // --- RENDER WALLET (含圖片壓縮與換算) ---
+        // --- RENDER WALLET ---
+        let q = "";
+        let currentExpImg = "";
         function renderWallet(el) {
             const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
             const total = expenses.reduce((s, i) => s + parseFloat(i.jpy), 0);
 
             el.innerHTML = `
-                <div class="bg-jp-ink text-jp-bg p-8 mb-10 soft-shadow">
-                    <p class="font-num text-[10px] font-bold opacity-30 mb-6 tracking-widest">CURRENCY CONVERTER</p>
-                    <div class="flex items-center gap-4">
-                        <input id="calc-input" readonly class="text-3xl font-num font-bold w-full outline-none text-white" placeholder="0">
-                        <button onclick="calcResult()" class="serif-title text-2xl text-jp-accent">換算</button>
+                <div class="bg-jp-ink text-jp-bg p-8 mb-8 rounded-3xl shadow-xl">
+                    <p class="font-num text-[10px] font-bold opacity-30 mb-4 tracking-widest uppercase">Quick Converter</p>
+                    <div class="flex items-center gap-4 mb-4">
+                        <input id="calc-input" readonly class="text-4xl font-num font-bold w-full outline-none text-white" placeholder="0">
+                        <div class="text-right">
+                            <p class="text-[10px] opacity-40 font-bold">TWD (÷5)</p>
+                            <p id="calc-res-twd" class="text-xl font-num font-bold text-jp-accent">0</p>
+                        </div>
                     </div>
-                    <div class="mt-4 flex justify-between border-t border-white/10 pt-4 font-num text-xs">
-                        <span class="opacity-40">TWD (÷5)</span>
-                        <span id="calc-res-twd" class="text-jp-accent font-bold">0</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-2 mt-8">
+                    <div class="grid grid-cols-4 gap-2">
                         ${['7','8','9','/','4','5','6','*','1','2','3','-','0','C','⌫','+'].map(k => `
-                            <button onclick="handleCalc('${k}')" class="p-3 font-num text-xs border border-white/5 hover:bg-white/5">${k}</button>
+                            <button onclick="handleCalc('${k}')" class="p-4 font-num text-xs rounded-xl bg-white/5 hover:bg-white/10 active:bg-white/20 transition-all">${k}</button>
                         `).join('')}
+                        <button onclick="calcResult()" class="col-span-4 p-4 mt-2 bg-jp-accent text-white font-bold rounded-xl active:scale-95 transition-all text-xs tracking-widest uppercase">Calculate</button>
                     </div>
                 </div>
 
-                <div class="bg-jp-paper p-6 jp-border mb-10">
-                    <p class="text-[10px] font-bold opacity-30 mb-4 tracking-widest uppercase">Quick Add</p>
+                <div class="bg-jp-paper p-6 rounded-2xl border border-jp-sand mb-8">
                     <div class="space-y-4">
-                        <input id="ex-name" type="text" placeholder="品項項目" class="w-full border-b border-jp-sand py-2 text-sm outline-none">
-                        <input id="ex-jpy" type="number" placeholder="金額 (JPY)" class="w-full border-b border-jp-sand py-2 text-sm font-num outline-none">
-                        <div class="flex gap-4 pt-2">
-                            <label class="flex-1 jp-border border-dashed p-4 flex flex-col items-center cursor-pointer hover:bg-jp-bg transition-colors">
-                                <i class="fa-solid fa-camera opacity-20 text-xl mb-1"></i>
-                                <span class="text-[8px] font-bold opacity-30">收據</span>
+                        <input id="ex-name" type="text" placeholder="品項項目" class="w-full border-b border-jp-sand py-3 text-sm outline-none px-2">
+                        <input id="ex-jpy" type="number" placeholder="金額 (JPY)" class="w-full border-b border-jp-sand py-3 text-sm font-num outline-none px-2">
+                        <div class="flex gap-3">
+                            <label class="flex-1 bg-jp-bg p-4 flex flex-col items-center justify-center rounded-2xl cursor-pointer hover:bg-jp-sand/30 transition-all">
+                                <i class="fa-solid fa-camera opacity-30 mb-1"></i>
+                                <span class="text-[8px] font-bold opacity-30">RECIEPT</span>
                                 <input type="file" class="hidden" accept="image/*" onchange="processImage(this)">
                             </label>
-                            <button onclick="saveExpense()" class="flex-[2] bg-jp-ink text-white font-bold text-xs uppercase tracking-widest active:scale-95 transition-all">儲存內容</button>
+                            <button onclick="saveExpense()" class="flex-[3] bg-jp-ink text-white rounded-2xl font-bold text-xs tracking-widest active:scale-95 transition-all">SAVE ENTRY</button>
                         </div>
-                        <div id="img-preview" class="hidden"><img id="preview-src" class="h-16 jp-border"></div>
+                        <div id="img-preview" class="hidden mt-2"><img id="preview-src" class="h-20 rounded-xl"></div>
                     </div>
                 </div>
 
-                <div class="space-y-4 pb-10">
-                    <p class="serif-title text-xl border-b border-jp-sand pb-2 flex justify-between">
-                        <span>開支記錄.</span>
-                        <span class="font-num text-xs opacity-30 mt-2">TOTAL ¥${total}</span>
+                <div class="space-y-3 pb-10">
+                    <p class="serif-title text-lg flex justify-between items-end mb-4">
+                        <span>開支流水.</span>
+                        <span class="font-num text-[10px] opacity-30 uppercase font-bold tracking-widest">Total ¥${total}</span>
                     </p>
                     ${expenses.reverse().map((ex, i) => `
-                        <div class="flex items-center gap-4 bg-jp-paper p-3 soft-shadow jp-border">
-                            <div class="w-10 h-10 bg-jp-bg overflow-hidden flex items-center justify-center">
+                        <div class="flex items-center gap-4 bg-jp-paper p-4 rounded-2xl border border-jp-sand">
+                            <div class="w-12 h-12 bg-jp-bg rounded-xl overflow-hidden flex items-center justify-center flex-shrink-0">
                                 ${ex.img ? `<img src="${ex.img}" class="w-full h-full object-cover">` : `<i class="fa-solid fa-receipt opacity-10"></i>`}
                             </div>
                             <div class="flex-1">
-                                <p class="font-bold text-xs">${ex.name}</p>
-                                <p class="font-num text-[10px] opacity-30">¥${ex.jpy} / NT$${Math.round(ex.jpy/5)}</p>
+                                <p class="font-bold text-sm">${ex.name}</p>
+                                <p class="font-num text-[10px] opacity-30 font-bold">¥${ex.jpy} / NT$${Math.round(ex.jpy/5)}</p>
                             </div>
-                            <button onclick="deleteExpense(${i})" class="text-xs opacity-20"><i class="fa-solid fa-trash"></i></button>
+                            <button onclick="deleteExpense(${i})" class="text-xs text-red-200 p-2"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     `).join('')}
                 </div>
             `;
         }
 
-        // --- CALCULATOR & IMAGE HELPER (同前，保持設定) ---
-        let q = "";
-        let currentExpImg = "";
         function handleCalc(k) {
             const input = document.getElementById('calc-input');
             if(k === 'C') q = "";
@@ -283,7 +258,7 @@
         function calcResult() {
             try {
                 const res = eval(q);
-                document.getElementById('calc-res-twd').innerText = "NT$ " + Math.round(res/5);
+                document.getElementById('calc-res-twd').innerText = Math.round(res/5);
                 q = res.toString(); document.getElementById('calc-input').value = q;
             } catch { document.getElementById('calc-input').value = "ERR"; q = ""; }
         }
@@ -324,16 +299,16 @@
             renderWallet(document.getElementById('app'));
         }
 
-        // --- BUY & LISTS & INFO (保持設定，調整為雜誌風) ---
+        // --- OTHER PAGES ---
         function renderBuy(el) {
-            const items = ["白色戀人", "薯條三兄弟", "合利他命 EX", "EVE 止痛藥", "Dyson 吹風機", "象印電鍋"];
+            const items = ["白色戀人", "薯條三兄弟", "合利他命 EX", "EVE 止痛藥", "DHC 護唇膏", "SK-II", "KitKat 抹茶"];
             el.innerHTML = `
-                <h2 class="serif-title text-3xl mb-10">購物備忘.</h2>
-                <div class="grid grid-cols-1 gap-px bg-jp-sand border border-jp-sand">
+                <h2 class="serif-title text-3xl mb-8">清單備忘.</h2>
+                <div class="space-y-3">
                     ${items.map(item => `
-                        <div class="bg-jp-paper p-5 flex justify-between items-center active:bg-jp-bg" onclick="window.open('https://www.google.com/search?q=${item}+日本價格')">
+                        <div onclick="window.open('https://www.google.com/search?q=${item}+日本')" class="bg-jp-paper p-5 rounded-2xl flex justify-between items-center border border-jp-sand active:scale-95 transition-all">
                             <span class="font-bold text-sm">${item}</span>
-                            <i class="fa-solid fa-chevron-right text-[10px] opacity-20"></i>
+                            <i class="fa-solid fa-magnifying-glass text-[10px] opacity-10"></i>
                         </div>
                     `).join('')}
                 </div>
@@ -341,25 +316,22 @@
         }
 
         function renderLists(el) {
-            const checklist = ["護照", "Visit Japan QR", "日幣現金", "信用卡", "發熱衣", "行動電源"];
+            const list = ["護照", "機票", "Visit Japan QR", "現金", "信用卡", "行動電源", "好穿的鞋"];
             const checks = JSON.parse(localStorage.getItem('checks') || '{}');
             el.innerHTML = `
-                <h2 class="serif-title text-3xl mb-10">出發清單.</h2>
-                <div class="bg-jp-paper p-8 soft-shadow jp-border space-y-6">
-                    ${checklist.map((item, i) => `
-                        <label class="flex items-center gap-4 cursor-pointer">
+                <h2 class="serif-title text-3xl mb-8">準備清單.</h2>
+                <div class="bg-jp-paper p-8 rounded-3xl border border-jp-sand space-y-6 mb-8">
+                    ${list.map((item, i) => `
+                        <label class="flex items-center gap-4 cursor-pointer group">
                             <input type="checkbox" class="peer hidden" onchange="toggleCheck(${i})" ${checks[i] ? 'checked' : ''}>
-                            <div class="w-5 h-5 jp-border flex items-center justify-center peer-checked:bg-jp-accent peer-checked:border-jp-accent transition-all">
+                            <div class="w-6 h-6 rounded-full border-2 border-jp-sand flex items-center justify-center peer-checked:bg-jp-accent peer-checked:border-jp-accent transition-all">
                                 <i class="fa-solid fa-check text-white text-[10px] opacity-0 peer-checked:opacity-100"></i>
                             </div>
-                            <span class="text-sm font-medium ${checks[i] ? 'line-through opacity-20' : ''}">${item}</span>
+                            <span class="text-sm font-bold ${checks[i] ? 'line-through opacity-20' : ''}">${item}</span>
                         </label>
                     `).join('')}
                 </div>
-                <div class="mt-12">
-                    <p class="font-num text-[10px] font-bold opacity-30 mb-4 tracking-widest uppercase">Free Memo</p>
-                    <textarea id="memo-field" oninput="saveMemo()" class="w-full h-40 p-5 bg-jp-paper jp-border soft-shadow text-sm outline-none" placeholder="隨手筆記...">${localStorage.getItem('memo') || ""}</textarea>
-                </div>
+                <textarea id="memo-field" oninput="saveMemo()" class="w-full h-40 p-6 bg-jp-paper rounded-3xl border border-jp-sand text-sm outline-none shadow-inner" placeholder="隨手筆記...">${localStorage.getItem('memo') || ""}</textarea>
             `;
         }
         function toggleCheck(i) {
@@ -372,20 +344,20 @@
 
         function renderInfo(el) {
             el.innerHTML = `
-                <h2 class="serif-title text-3xl mb-10">旅行資訊.</h2>
+                <h2 class="serif-title text-3xl mb-8">重要資訊.</h2>
                 <div class="space-y-6">
-                    <div class="bg-jp-accent text-white p-6 soft-shadow">
-                        <p class="font-bold mb-4 border-b border-white/20 pb-2">EMERGENCY</p>
-                        <div class="space-y-2 text-sm font-num">
-                            <div class="flex justify-between"><span>Police</span><span>110</span></div>
-                            <div class="flex justify-between"><span>Ambulance</span><span>119</span></div>
+                    <div class="bg-jp-accent text-white p-8 rounded-3xl shadow-lg">
+                        <p class="font-bold text-xs tracking-widest mb-4 opacity-60">EMERGENCY CALL</p>
+                        <div class="space-y-4">
+                            <div class="flex justify-between border-b border-white/10 pb-2"><span class="font-bold">Police</span><span class="font-num">110</span></div>
+                            <div class="flex justify-between border-b border-white/10 pb-2"><span class="font-bold">Ambulance</span><span class="font-num">119</span></div>
                         </div>
                     </div>
-                    <div class="bg-jp-paper p-6 jp-border text-xs leading-relaxed space-y-4">
-                        <p class="font-bold">NOTICE</p>
-                        <p class="opacity-60">● 手扶梯：大阪靠右站立</p>
-                        <p class="opacity-60">● 氣溫：2月大阪約 3-10°C，注意防風</p>
-                        <p class="opacity-60">● VJW QR Code 建議截圖備用</p>
+                    <div class="bg-jp-paper p-8 rounded-3xl border border-jp-sand text-[13px] leading-relaxed space-y-4">
+                        <p class="font-bold opacity-30 tracking-widest uppercase text-[10px]">Travel Notice</p>
+                        <p>● 大阪手扶梯習慣靠右站立。</p>
+                        <p>● 2月大阪氣溫極低，需注意防風與室內暖氣價差。</p>
+                        <p>● 建議隨身準備小額現金供小店支付。</p>
                     </div>
                 </div>
             `;
